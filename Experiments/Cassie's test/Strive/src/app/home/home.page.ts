@@ -17,7 +17,7 @@ export class HomePage {
   login(){
     console.log("Username: "+ this.username);
     console.log("Password: "+ this.password);
-
+    this.router.navigateByUrl('/main');
   }
 
   goRegister(){

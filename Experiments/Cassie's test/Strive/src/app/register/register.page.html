@@ -1,10 +1,5 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding center text-center>
+  <ion-title>Register</ion-title>
   <ion-list>
     <ion-item>
       <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
@@ -15,5 +10,6 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="round" (click)="register()">Register</ion-button>
+  <ion-button expand="round" (click)="register()">Register Now</ion-button>
+  <ion-button expand="round" color="light" (click)="loginreturn()">Return to Login</ion-button>
 </ion-content>

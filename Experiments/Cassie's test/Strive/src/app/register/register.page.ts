@@ -25,4 +25,8 @@ export class RegisterPage{
     }
   }
 
+  loginreturn() {
+    this.router.navigateByUrl('/home')
+  }
+
 }
