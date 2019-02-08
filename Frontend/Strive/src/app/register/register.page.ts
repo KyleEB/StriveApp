@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { RegisterService } from './../services/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -10,8 +11,10 @@ export class RegisterPage{
   username:string = '';
   password:string = '';
   repassword:string = '';
-  constructor(public router: Router) { 
-    
+  constructor(
+    public router: Router,
+    private reg: RegisterService
+    ) { 
   }
 
   register(){
@@ -23,6 +26,11 @@ export class RegisterPage{
     } else if (this.repassword.length==0) {
       alert("Please repeat password") 
     }
+
+    this.reg.registerUser(this.username, this.password)
+    .subscribe(res => {
+        console.log(res)
+      });
   }
 
   loginreturn() {
