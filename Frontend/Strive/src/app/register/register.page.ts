@@ -24,7 +24,9 @@ export class RegisterPage{
     } else if (this.password.length==0) {
       alert("Please enter password");
     } else if (this.repassword.length==0) {
-      alert("Please repeat password") 
+      alert("Please repeat password") ;
+    } else if (this.password != this.repassword){
+      alert("Passwords do not match");
     }
 
     this.reg.registerUser(this.username, this.password)
