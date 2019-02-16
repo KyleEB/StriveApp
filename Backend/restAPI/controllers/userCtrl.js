@@ -27,7 +27,7 @@ exports.loginUser = (req, res, next) => {
             return res.status(200).json({error: info});
         }
 
-        return res.status(201).json({message: 'User created!', user: user});
+        return res.status(201).json({message: 'User Login Successful!', user: user});
 
     })(req, res, next);
 }
