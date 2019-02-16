@@ -26,19 +26,10 @@ export class RegisterPage{
     {
       this.displayAlert('Invalid Input',"Please enter username");
     } else if (this.password.length==0) {
-<<<<<<< HEAD
       this.displayAlert('Invalid Input',"Please enter password");
     } else if (this.repassword.length==0 || this.repassword != this.password) {
       this.displayAlert('Invalid Input',"Please repeat password") 
     } else {
-=======
-      alert("Please enter password");
-    } else if (this.repassword.length==0) {
-      alert("Please repeat password") ;
-    } else if (this.password != this.repassword){
-      alert("Passwords do not match");
-    }
->>>>>>> 0448bba727fe7c65cc1b50c05ef889b25cef0fd6
 
     await this.showLoading();
     this.reg.registerUser(this.username, this.password)
