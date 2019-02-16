@@ -17,4 +17,11 @@ export class RegisterService {
       password: password
     });
   }
+
+  loginUser(username ,password): Observable <any>{
+    return this.http.post('http://localhost:3000/api/login/user', {
+      username: username,
+      password: password
+    });
+  }
 }
