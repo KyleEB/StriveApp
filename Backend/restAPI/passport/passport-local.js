@@ -36,7 +36,7 @@ passport.use('local-login', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 },
- (req, email, password, done) => {
+ (req, username, password, done) => {
     User.findOne({'username' : username}, (err,user) => {
         if(err){
             return done(err)

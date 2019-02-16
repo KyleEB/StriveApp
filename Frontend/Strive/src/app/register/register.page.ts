@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from './../services/register.service';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -17,7 +19,8 @@ export class RegisterPage{
     public router: Router,
     private reg: RegisterService,
     private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private storage: Storage
     ) { 
   }
 
@@ -42,6 +45,7 @@ export class RegisterPage{
         }
     
         if(res.user){
+          this.storage.set('username', res.user.username);
           this.loginreturn();
         }
       });

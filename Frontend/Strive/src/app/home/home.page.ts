@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 import { RegisterService } from '../services/register.service';
 import { LoadingController, AlertController } from '@ionic/angular';
-import { Storage } from 'ionic/storage';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -32,8 +32,9 @@ export class HomePage {
     this.reg.loginUser(this.username, this.password).subscribe( res => 
       { 
         this.loadingCtrl.dismiss();
+        console.log(res.user);
         if(res.user){
-          this.storage.set('username', res.user.email);
+          this.storage.set('username', res.user.username);
           this.router.navigate(['/main']);
         }
       },
