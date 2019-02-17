@@ -10,7 +10,8 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage{
-
+  fullname:string = '';
+  email:string='';
   username:string = '';
   password:string = '';
   repassword:string = '';
@@ -25,8 +26,11 @@ export class RegisterPage{
   }
 
  async register(){
-    if(this.username.length==0)
-    {
+    if(this.fullname.length==0) {
+      this.displayAlert('Invalid Input',"Please enter full name");
+    } else if(this.email.length==0) {
+      this.displayAlert('Invalid Input',"Please enter email");
+    } else if(this.username.length==0) {
       this.displayAlert('Invalid Input',"Please enter username");
     } else if (this.password.length==0) {
       this.displayAlert('Invalid Input',"Please enter password");
