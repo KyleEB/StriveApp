@@ -18,18 +18,6 @@ export class DatesPage implements OnInit {
   
   save(){
 	this.router.navigateByUrl('/calendar');
-  
-	eventTime = time;
-	eventName = name;
-	eventDesc = desc;
-	eventLocation = loc;
-	
-	this.navCrtl.push(calendar, {
-		Time: eventTime,
-		Name: eventName,
-		description: eventDesc,
-		location: eventLocation
-	});
   }
   
   cancel(){
