@@ -15,6 +15,30 @@ export class MenuPage implements OnInit {
         url: '/menu/(menucontent:main)'
       },
       {
+        title: 'Calendar Page',
+        url: '/menu/(menucontent:calendar)'
+      },
+      {
+        title: 'Blog Page',
+        url: '/menu/(menucontent:blog)'
+      },
+      {
+        title: 'Journal Page',
+        url: '/menu/(menucontent:journal)'
+      },
+      {
+        title: 'Meditation Page',
+        url: '/menu/(menucontent:meditation)'
+      },
+      {
+        title: 'Goals Page',
+        url: '/menu/(menucontent:goals)'
+      },
+      {
+        title: 'Achievements Page',
+        url: '/menu/(menucontent:achievements)'
+      },
+      {
         title: 'Profile Page',
         url: '/menu/(menucontent:profile)'
       }

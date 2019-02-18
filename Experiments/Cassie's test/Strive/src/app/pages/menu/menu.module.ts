@@ -9,6 +9,12 @@ import { MainPageModule } from '../main/main.module';
 import { ProfilePageModule } from '../profile/profile.module';
 import { HomePageModule } from 'src/app/home/home.module';
 import { RegisterPageModule } from 'src/app/register/register.module';
+import { BlogPageModule } from '../blog/blog.module';
+import { JournalPageModule } from '../blog/journal/journal.module';
+import { GoalsPageModule } from '../goals/goals.module';
+import { AchievementsPageModule } from '../goals/achievements/achievements.module';
+import { MeditationPageModule } from '../meditation/meditation.module';
+import { CalendarPageModule } from '../calendar/calendar.module';
 
 
 @NgModule({
@@ -20,7 +26,13 @@ import { RegisterPageModule } from 'src/app/register/register.module';
     ProfilePageModule,
     MainPageModule,
     HomePageModule,
-    RegisterPageModule
+    RegisterPageModule,
+    BlogPageModule,
+    JournalPageModule,
+    GoalsPageModule,
+    AchievementsPageModule,
+    MeditationPageModule,
+    CalendarPageModule
   ],
   declarations: [MenuPage]
 })
