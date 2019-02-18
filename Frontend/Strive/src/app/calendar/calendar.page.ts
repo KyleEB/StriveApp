@@ -10,20 +10,19 @@ import { Storage } from '@ionic/storage';
 })
 export class CalendarPage implements OnInit {
 	
-	time: string;
-	name: string;
-	desc: string;
-	loc: string;
-
    constructor(public router: Router,
     private reg: RegisterService,
-    private storage: Storage,
+    private storage: Storage
     ){
   }
   
   goDate(){
 		this.router.navigateByUrl('/dates');
 	}
+	
+  backToMain(){
+		this.router.navigateByUrl('/main');
+  }
 
   ngOnInit() {
   }
