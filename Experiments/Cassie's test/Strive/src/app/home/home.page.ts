@@ -19,7 +19,8 @@ export class HomePage {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private storage: Storage,
-    private menu: MenuController
+    private menu: MenuController,
+    public nav: NavController
     ){
   }
 
@@ -36,8 +37,7 @@ export class HomePage {
         console.log(res.user);
         if(res.user){
           this.storage.set('username', res.user.username);
-          this.router.navigate(['/main']);
-        }
+          this.nav.navigateRoot("menu/(menucontent:main)");        }
       },
       err => {
         this.loadingCtrl.dismiss();
@@ -65,7 +65,7 @@ export class HomePage {
   }
 
   goRegister(){
-    this.router.navigate(["(menucontent:register)"]);
+    this.nav.navigateRoot("menu/(menucontent:register)");
   }
 
   ionViewWillEnter() {
