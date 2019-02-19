@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,9 @@ export class ProfilePage implements OnInit {
   subscribeStatus:string="Subscribe"
   subscribed:boolean=false;
 
-  constructor() { }
+  constructor(
+    public nav: NavController
+  ) {}
 
   ngOnInit() {
   }
@@ -34,6 +37,10 @@ export class ProfilePage implements OnInit {
     } else {
       this.subColor="primary";
     }
+  }
+
+  logout(){
+    this.nav.navigateRoot("menu/(menucontent:home)");
   }
 
 }

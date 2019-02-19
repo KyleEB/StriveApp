@@ -14,6 +14,7 @@
   <ion-item>
       <ion-label>Email: {{email}}</ion-label> 
   </ion-item>
-  <ion-button expand="square">Change Password</ion-button><br>
-  <ion-button expand="square" (click)="changeColor()" (click)="subscribeStatusChange()" color={{subColor}}>{{subscribeStatus}}</ion-button>
+  <ion-button expand="full">Change Password</ion-button>
+  <ion-button expand="full" (click)="changeColor()" (click)="subscribeStatusChange()" color={{subColor}}>{{subscribeStatus}}</ion-button><br>
+  <ion-button expand="full" (click)="logout()">Logout</ion-button><br>
 </ion-content>
