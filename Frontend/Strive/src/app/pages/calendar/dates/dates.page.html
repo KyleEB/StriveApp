@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-item>
+		<ion-input placeholder="time"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-input placeholder="event name"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-input placeholder="event description"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-input placeholder="location"></ion-input>
+	</ion-item>
+	<ion-button expand="block" (click)="save()">save</ion-button>
+	<ion-button expand="block" color="danger" (click)="cancel()">cancel</ion-button>
+</ion-content>

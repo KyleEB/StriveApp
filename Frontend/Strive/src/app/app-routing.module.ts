@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'goals', loadChildren: './pages/goals/goals.module#GoalsPageModule' },
   { path: 'achievements', loadChildren: './pages/goals/achievements/achievements.module#AchievementsPageModule' },
   { path: 'calendar', loadChildren: './pages/calendar/calendar.module#CalendarPageModule' },
+  { path: 'dates', loadChildren: './pages/calendar/dates/dates.module#DatesPageModule' },
 
 ];
 
