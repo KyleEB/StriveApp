@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 import { RegisterService } from '../services/register.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, MenuController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -18,7 +18,9 @@ export class HomePage {
     private reg: RegisterService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private storage: Storage
+    private storage: Storage,
+    private menu: MenuController,
+    public nav: NavController
     ){
   }
 
@@ -35,8 +37,7 @@ export class HomePage {
         console.log(res.user);
         if(res.user){
           this.storage.set('username', res.user.username);
-          this.router.navigate(['/main']);
-        }
+          this.nav.navigateRoot("menu/(menucontent:main)");        }
       },
       err => {
         this.loadingCtrl.dismiss();
@@ -64,6 +65,10 @@ export class HomePage {
   }
 
   goRegister(){
-    this.router.navigateByUrl('/register');
+    this.nav.navigateRoot("menu/(menucontent:register)");
+  }
+
+  ionViewWillEnter() {
+    this.menu.enable(false);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from './../services/register.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, MenuController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -21,7 +21,8 @@ export class RegisterPage{
     private reg: RegisterService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private storage: Storage
+    private storage: Storage,
+    private menu: MenuController
     ) { 
   }
 
@@ -80,5 +81,8 @@ export class RegisterPage{
       buttons: ['Dismiss']
     });
     return await alert.present();
+  }
+  ionViewWillEnter() {
+    this.menu.enable(false);
   }
 }
