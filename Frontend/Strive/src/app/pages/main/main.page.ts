@@ -12,7 +12,7 @@ import { Storage } from '@ionic/storage'
 })
 export class MainPage {
 
-    username: any;
+    userFullName: any;
 
     constructor(public router: Router,
     private reg: RegisterService,
@@ -24,11 +24,12 @@ export class MainPage {
     }
 
     async loadUser(){
-       await this.storage.get('username').then((value) => {
-        console.log('your name is ' + value);
-        this.username = value; 
+       await this.storage.get('user').then((user) => {
+        console.log('your name is ' + user.fullname);
+        console.log('your username is ' + user.username);
+        this.userFullName = user.fullname;
       });
-      console.log('your username is ' + this.username);
+      
       
     }
 
