@@ -8,7 +8,7 @@ passport.use('local-signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 },
- (req, username, done) => { //pulls info from register.page.ts l
+ (req, username, password, done) => { //pulls info from register.page.ts l
     User.findOne({'username' : username}, (err,user) => {
         if(err){
             return done(err)
@@ -28,7 +28,7 @@ passport.use('local-signup', new LocalStrategy({
         newUser.fullname = req.body.fullname;
         newUser.email = req.body.email;
 
-        newUser.save((done, err) => {
+        newUser.save((err) => {
             return done(err, newUser);
         })
     });
