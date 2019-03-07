@@ -18,7 +18,7 @@ export class HomePage {
     private reg: RegisterService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private storage: Storage,
+    public storage: Storage,
     private menu: MenuController,
     public nav: NavController
     ){
@@ -70,5 +70,9 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.menu.enable(false);
+  }
+  
+  removeUserLocalStorage(){
+    return this.storage.remove('username');
   }
 }

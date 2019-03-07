@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router'
+import { HomePage } from 'src/app/home/home.page';
 
 @Component({
   selector: 'app-menu',
@@ -43,13 +44,19 @@ export class MenuPage implements OnInit {
         url: '/menu/(menucontent:profile)'
       }
     ];
-  constructor(private router: Router) { 
+  constructor(private router: Router,
+    private loginpage : HomePage) { 
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
   }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this.loginpage.removeUserLocalStorage();
+    this.router.navigateByUrl('home');
   }
 
 }

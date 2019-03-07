@@ -24,6 +24,7 @@ import { RegisterPage } from './register/register.page';
   providers: [
     StatusBar,
     SplashScreen,
+    HomePage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
