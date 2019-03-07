@@ -28,8 +28,8 @@ passport.use('local-signup', new LocalStrategy({
         newUser.fullname = req.body.fullname;
         newUser.email = req.body.email;
 
-        newUser.save((err) => {
-            return done(null, newUser);
+        newUser.save((done, err) => {
+            return done(err, newUser);
         })
     });
 }));
