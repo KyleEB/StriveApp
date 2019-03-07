@@ -7,14 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding center text-center>
-  <ion-item>
+<ion-content padding center text-center color="light">
+  <ion-item class='padding'>
       <ion-label>Username: {{username}}</ion-label> 
   </ion-item>
-  <ion-item>
+  <ion-item class='padding'>
       <ion-label>Email: {{email}}</ion-label> 
   </ion-item>
-  <ion-button expand="full">Change Password</ion-button>
-  <ion-button expand="full" (click)="changeColor()" (click)="subscribeStatusChange()" color={{subColor}}>{{subscribeStatus}}</ion-button><br>
-  <ion-button expand="full" (click)="logout()">Logout</ion-button><br>
+  <ion-button expand="full" class='padding'>Change Password</ion-button>
+  <ion-button expand="full" class='padding' (click)="changeColor()" (click)="subscribeStatusChange()" color={{subColor}}>{{subscribeStatus}}</ion-button><br>
+  <ion-button expand="full" class='padding' (click)="logout()">Logout</ion-button><br>
 </ion-content>

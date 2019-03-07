@@ -1,6 +1,6 @@
 <ion-content padding center text-center>
   <ion-title>Strive</ion-title>
-  <ion-list>
+  <ion-list class='padding'>
     <ion-item>
       <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
     </ion-item>
@@ -8,9 +8,7 @@
       <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
   </ion-list>
-
   <ion-button expand="round" href="../menu/(menucontent:main)" routerDirection="root">Cassie's login</ion-button>
   <ion-button expand="round" (click)="login()">Log in</ion-button>
   <ion-button expand="round" (click)="goRegister()">Register</ion-button>
-
 </ion-content>
