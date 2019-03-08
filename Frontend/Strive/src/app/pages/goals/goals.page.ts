@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-goals',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalsPage implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private theme: ThemeService
+  ) {
+    this.theme.storedTheme;
+   }
   ngOnInit() {
   }
 

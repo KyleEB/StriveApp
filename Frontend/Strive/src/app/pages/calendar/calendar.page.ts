@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ThemeService } from '../../theme.service'
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.page.html',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private theme: ThemeService
+  ) {
+    this.theme.storedTheme;
+   }
 
   public form = [
       { val: 'Task 1', isChecked: false },

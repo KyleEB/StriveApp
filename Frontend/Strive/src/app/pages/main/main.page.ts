@@ -4,6 +4,7 @@ import { RegisterService } from '../../services/register.service';
 import { LoadingController, AlertController, MenuController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage'
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-main',
@@ -19,8 +20,10 @@ export class MainPage {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private storage: Storage,
-    private menu: MenuController){
+    private menu: MenuController,
+    private theme: ThemeService){
       this.loadUser();
+      this.theme.storedTheme;
     }
 
     async loadUser(){
