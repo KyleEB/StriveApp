@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-achievements',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AchievementsPage implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private theme: ThemeService
+  ) {
+    this.theme.storedTheme;
+   }
   ngOnInit() {
   }
 
