@@ -1,5 +1,7 @@
 {
   "name": "Strive",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
