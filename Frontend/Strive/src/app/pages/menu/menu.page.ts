@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router'
 import { HomePage } from 'src/app/home/home.page';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-menu',
@@ -45,9 +46,10 @@ export class MenuPage implements OnInit {
       }
     ];
   constructor(private router: Router,
-    private loginpage : HomePage) { 
-    this.router.events.subscribe((event: RouterEvent) => {
-      this.selectedPath = event.url;
+      private loginpage : HomePage,
+      private theme: ThemeService) { 
+      this.router.events.subscribe((event: RouterEvent) => {
+      this.selectedPath = event.url;    
     });
   }
 
@@ -55,6 +57,7 @@ export class MenuPage implements OnInit {
   }
 
   logout(){
+    this.theme.setTheme('default')
     this.loginpage.removeUserLocalStorage();
     this.router.navigateByUrl('home');
   }

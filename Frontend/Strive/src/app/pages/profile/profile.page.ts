@@ -84,6 +84,7 @@ export class ProfilePage implements OnInit {
   }
 
   logout(){
+    this.changeTheme('default')
     this.nav.navigateRoot("menu/(menucontent:home)");
   }
 
