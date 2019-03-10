@@ -13,6 +13,10 @@ export class JournalPage implements OnInit {
   ) {
     this.theme.storedTheme;
    }
+   
+   save(){
+	
+   }
   ngOnInit() {
   }
 

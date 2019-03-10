@@ -17,7 +17,7 @@ export class MenuPage implements OnInit {
         url: '/menu/(menucontent:main)'
       },
       {
-        title: 'Calendar Page',
+        title: 'To-Do Page',
         url: '/menu/(menucontent:calendar)'
       },
       {
