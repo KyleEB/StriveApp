@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content>
+	<ion-button expand="round" (click)="save()">Save Note</ion-button>
+	<ion-button expand="round" (click)="viewNotes()">Notes</ion-button>
+	
+  <ion-item>
+	<ion-input [(ngModel)]="text" type="text"></ion-input>
+  </ion-item>
 
 </ion-content>
