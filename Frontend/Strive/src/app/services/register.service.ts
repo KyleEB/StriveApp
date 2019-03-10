@@ -11,10 +11,12 @@ export class RegisterService {
 
   }
 
-  registerUser(username, password): Observable <any>{
+  registerUser(username, password, fullname, email): Observable <any>{
     return this.http.post('http://localhost:3000/api/signup/user', {
       username: username,
-      password: password
+      password: password,
+      fullname: fullname,
+      email: email
     });
   }
 

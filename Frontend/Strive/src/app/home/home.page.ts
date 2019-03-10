@@ -36,7 +36,7 @@ export class HomePage {
         this.loadingCtrl.dismiss();
         console.log(res.user);
         if(res.user){
-          this.storage.set('username', res.user.username);
+          this.storage.set('user', res.user);
           this.nav.navigateRoot("menu/(menucontent:main)");        }
       },
       err => {

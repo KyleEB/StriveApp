@@ -2,12 +2,13 @@ const User = require('../models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+//REGISTRATION
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
 },
- (req, username, password, done) => { //passback to userCtrl
+ (req, username, password, done) => { //pulls info from register.page.ts l
     User.findOne({'username' : username}, (err,user) => {
         if(err){
             return done(err)
@@ -24,13 +25,16 @@ passport.use('local-signup', new LocalStrategy({
         const newUser = new User();
         newUser.username = req.body.username;
         newUser.password = newUser.encryptPassword(req.body.password);
+        newUser.fullname = req.body.fullname;
+        newUser.email = req.body.email;
 
         newUser.save((err) => {
-            return done(null, newUser);
+            return done(err, newUser);
         })
     });
 }));
 
+//LOGIN
 passport.use('local-login', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',

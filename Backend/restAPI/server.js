@@ -9,9 +9,18 @@ const passport = require('passport');
 
 const app = express();
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/striveapp', {useNewUrlParser: true});
+//mongoose.Promise = global.Promise;
+var uri = "mongodb+srv://striveAdmin:striveAdmin@striveapp-cdpqh.mongodb.net/test?retryWrites=true"
+mongoose.connect(uri, {useNewUrlParser: true}).then(
+    ()=> {
+        console.log("Database connection established");
+    },
 
+    err => {
+        console.log("error couldn't connect due to", err);
+    }
+);
+//'mongodb://localhost/striveapp'
 require('./passport/passport-local');
 
 app.use(cors());

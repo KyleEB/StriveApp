@@ -40,7 +40,7 @@ export class RegisterPage{
     } else {
 
     await this.showLoading();
-    this.reg.registerUser(this.username, this.password)
+    this.reg.registerUser(this.username, this.password, this.fullname, this.email)
     .subscribe(async res =>  {
         this.loadingCtrl.dismiss();
         console.log(res)
