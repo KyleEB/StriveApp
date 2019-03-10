@@ -26,4 +26,11 @@ export class RegisterService {
       password: password
     });
   }
+
+  changePasswordUser(username, password): Observable <any>{
+    return this.http.post('http://localhost:3000/api/changepassword/user', {
+      username: username,
+      password: password
+    });
+  }
 }

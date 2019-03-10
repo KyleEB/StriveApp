@@ -79,8 +79,7 @@ passport.use('local-password', new LocalStrategy({
             return done(null, false, 'Password must be longer than 4 characters');
         }
 
-        newUser.save((err) => {
-            return done(err, newUser);
-        })
+            return done(err, user);
+        
     });
 }));
