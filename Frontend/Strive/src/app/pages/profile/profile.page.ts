@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ThemeService } from '../../theme.service';
 
+import { Storage } from '@ionic/storage'
+
 const themes = {
   warm: {
     primary: '#F78154',
@@ -50,10 +52,13 @@ export class ProfilePage implements OnInit {
   subColor:string="primary";
   subscribeStatus:string="Subscribe"
   subscribed:boolean=false;
+  username: any;
+  email: any;
 
   constructor(
     public nav: NavController,
-    private theme: ThemeService
+    private theme: ThemeService,
+    public storage: Storage
   ) {}
 
   changeTheme(name) {
@@ -61,6 +66,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+      this.loadUser();
   }
 
   subscribeStatusChange(){
@@ -86,6 +92,15 @@ export class ProfilePage implements OnInit {
   logout(){
     this.changeTheme('default')
     this.nav.navigateRoot("menu/(menucontent:home)");
+  }
+
+  async loadUser(){
+    await this.storage.get('user').then((user) => {
+      console.log('your name is ' + user.fullname);
+      console.log('your username is ' + user.username);
+      this.username = user.username;
+     this.email = user.email;
+   });
   }
 
 }
