@@ -61,3 +61,26 @@ passport.use('local-login', new LocalStrategy({
         return done(null, user);
     });
 }));
+
+//changepassword
+passport.use('local-password', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+},
+ (req, username, password, done) => { //pulls info from register.page.ts l
+    User.findOneAndUpdate({'username' : username},
+     {set: {'password' : User.encryptPassword(req.body.password) } }, (err,user) => {
+        if(err){
+            return done(err)
+        }
+
+        if(req.body.password.length < 5){
+            return done(null, false, 'Password must be longer than 4 characters');
+        }
+
+        newUser.save((err) => {
+            return done(err, newUser);
+        })
+    });
+}));

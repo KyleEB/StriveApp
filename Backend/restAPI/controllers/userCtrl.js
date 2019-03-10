@@ -31,3 +31,18 @@ exports.loginUser = (req, res, next) => {
 
     })(req, res, next);
 }
+
+exports.changePassword = (req, res, next) =>{
+    passport.authenticate('local-password', (err, user, info) => {
+        if(err){
+            return res.status(200).json({error: err});
+        }
+
+        if(info){
+            return res.status(200).json({error: info});
+        }
+
+        return res.status(201).json({message: 'Password Change Successful!', user: user});
+
+    })(req, res, next);
+}

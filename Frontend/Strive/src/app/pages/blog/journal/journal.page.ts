@@ -9,10 +9,10 @@ import { Storage } from '@ionic/storage';
 })
 export class JournalPage implements OnInit {
 
+  text:string = '';
   constructor(
-    private theme: ThemeService,
-	private storage: Storage
-  ) {
+  private theme: ThemeService,
+	private storage: Storage) {
     this.theme.storedTheme;
    }
    
