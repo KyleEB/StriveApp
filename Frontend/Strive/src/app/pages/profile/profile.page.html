@@ -14,7 +14,10 @@
   <ion-item class='padding'>
       <ion-label>Email: {{email}}</ion-label> 
   </ion-item>
-  <ion-button expand="full" class='padding'>Change Password</ion-button>
+  <ion-item>
+    <ion-input placeholder="New Password" type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-button expand="full" class='padding' (click)="changePassword()">Change Password</ion-button>
   <ion-button expand="full" class='padding' (click)="changeColor()" (click)="subscribeStatusChange()" color={{subColor}}>{{subscribeStatus}}</ion-button><br>
   <ion-button expand="full" class='padding' (click)="logout()">Logout</ion-button>
   <br><br>

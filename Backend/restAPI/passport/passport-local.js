@@ -68,9 +68,11 @@ passport.use('local-password', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 },
- (req, username, password, done) => { //pulls info from register.page.ts l
+ (req, username, password, done) => { //pulls info from register.page.ts 
+    const newUser = new User();
+    newUser.password = newUser.encryptPassword(req.body.password);
     User.findOneAndUpdate({'username' : username},
-     {set: {'password' : User.encryptPassword(req.body.password) } }, (err,user) => {
+     {$set: {'password' : newUser.password } }, (err,user) => {
         if(err){
             return done(err)
         }

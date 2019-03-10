@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { ThemeService } from '../../theme.service';
+import { RegisterService } from '../../services/register.service'
 
 import { Storage } from '@ionic/storage'
 
@@ -54,11 +55,15 @@ export class ProfilePage implements OnInit {
   subscribed:boolean=false;
   username: any;
   email: any;
+  password: any;
+  
 
   constructor(
     public nav: NavController,
     private theme: ThemeService,
-    public storage: Storage
+    public storage: Storage,
+    private register: RegisterService,
+    private alertCtrl: AlertController
   ) {}
 
   changeTheme(name) {
@@ -101,6 +106,28 @@ export class ProfilePage implements OnInit {
       this.username = user.username;
      this.email = user.email;
    });
+  }
+
+  changePassword(){
+    this.register.changePasswordUser(this.username, this.password).subscribe(res =>
+    { 
+      console.log(res.user);
+      if(res.user){
+        this.storage.set('user', res.user);
+      }
+    },
+    err => {
+      this.displayAlert('Login Error', err.error);
+    });
+  }
+
+  async displayAlert(header, subheader){
+    const alert = await this.alertCtrl.create({
+      header: header,
+      subHeader: subheader,
+      buttons: ['Dismiss']
+    });
+    return await alert.present();
   }
 
 }
