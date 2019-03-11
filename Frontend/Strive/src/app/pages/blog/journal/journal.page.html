@@ -8,12 +8,23 @@
 </ion-header>
 
 <ion-content>
-	<ion-button expand="round" (click)="save()">Save Note</ion-button>
+	
 	<ion-button expand="round" (click)="viewNotes()">Notes</ion-button>
 	<ion-button expand="round" (click)="backToMain()">Main Menu</ion-button>
-	
-  <ion-item>
-	<ion-input [(ngModel)]="text" type="text"></ion-input>
-  </ion-item>
+  
+<ion-list>
+  <ion-item-sliding>
+    <ion-item>
+	  <ion-input placeholder="Write your notes here!"></ion-input>
+    </ion-item>
+    <ion-item-options side="start">
+		<ion-item-option (click)="share(item)">Share</ion-item-option>
+    </ion-item-options>
+	<ion-item-options side="end">
+		<ion-item-option color="danger" (click)="delete(item)">Delete</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  <ion-button expand="round" (click)="save(item)">Save Note</ion-button>
+</ion-list>
 
 </ion-content>

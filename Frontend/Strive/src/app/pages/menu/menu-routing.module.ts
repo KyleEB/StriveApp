@@ -11,6 +11,7 @@ import { MeditationPage } from '../meditation/meditation.page';
 import { GoalsPage } from '../goals/goals.page';
 import { AchievementsPage } from '../goals/achievements/achievements.page';
 import { CalendarPage } from '../calendar/calendar.page';
+import { DatesPage } from '../calendar/dates/dates.page';
 
 const routes: Routes = [
   {
@@ -66,7 +67,12 @@ const routes: Routes = [
         path: 'profile',
         outlet: 'menucontent',
         component: ProfilePage
-      }
+      },
+	  {
+		path: 'dates',
+		outlet: 'menucontent',
+		component: DatesPage
+	  }
     ]
   },
   {

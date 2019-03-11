@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class JournalPage implements OnInit {
 
-  text:string = '';
+  item:string = '';
   constructor(
   private theme: ThemeService,
 	public nav: NavController) {
@@ -20,8 +20,8 @@ export class JournalPage implements OnInit {
 		this.nav.navigateRoot("menu/(menucontent:main)");
 	}
    
-   save(){
-	
+   save(item){
+		
    }
    viewNotes(){
 	

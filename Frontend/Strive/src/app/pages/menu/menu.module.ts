@@ -15,6 +15,7 @@ import { GoalsPageModule } from '../goals/goals.module';
 import { AchievementsPageModule } from '../goals/achievements/achievements.module';
 import { MeditationPageModule } from '../meditation/meditation.module';
 import { CalendarPageModule } from '../calendar/calendar.module';
+import { DatesPageModule } from '../calendar/dates/dates.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CalendarPageModule } from '../calendar/calendar.module';
     GoalsPageModule,
     AchievementsPageModule,
     MeditationPageModule,
-    CalendarPageModule
+    CalendarPageModule,
+	DatesPageModule
   ],
   declarations: [MenuPage]
 })
