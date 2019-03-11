@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/theme.service';
-import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-journal',
@@ -12,18 +12,19 @@ export class JournalPage implements OnInit {
   text:string = '';
   constructor(
   private theme: ThemeService,
-	private storage: Storage) {
+	public nav: NavController) {
     this.theme.storedTheme;
    }
    
+	backToMain(){
+		this.nav.navigateRoot("menu/(menucontent:main)");
+	}
+   
    save(){
-	this.storage.set('newNote', this.text);
 	
    }
    viewNotes(){
-	 this.storage.get('newNote').then((data) => {
-		console.log(data);
-	 });
+	
    }
   ngOnInit() {
   }
