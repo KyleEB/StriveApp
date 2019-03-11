@@ -11,17 +11,17 @@ import { Storage } from '@ionic/storage';
 export class DatesPage implements OnInit {
 	
   constructor(public router: Router,
-    public navCrtl: NavController,
+    public nav: NavController,
     private storage: Storage
     ){
   }
   
   save(){
-	this.router.navigateByUrl('/calendar');
+	this.nav.navigateRoot("menu/(menucontent:calendar)");
   }
   
   cancel(){
-	this.router.navigateByUrl('/calendar');
+	this.nav.navigateRoot("menu/(menucontent:calendar)");
   }
 
   ngOnInit() {

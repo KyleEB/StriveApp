@@ -16,6 +16,10 @@ export class CalendarPage implements OnInit {
     this.theme.storedTheme;
    }
 
+   goDate(){
+	this.nav.navigateRoot("menu/(menucontent:dates)");
+  }
+
   public form = [
       { val: 'Task 1', isChecked: false },
       { val: 'Task 2', isChecked: false },
