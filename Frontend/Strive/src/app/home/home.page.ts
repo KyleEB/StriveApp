@@ -69,7 +69,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    this.menu.enable(false);
+    this.menu.enable(true);
   }
   
   removeUserLocalStorage(){
