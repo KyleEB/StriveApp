@@ -1,3 +1,5 @@
-ion-content {
-    --background: url('../../../assets/meditation/forest.jpg') no-repeat center center fixed;
+.pic {
+//  no-repeat center center fixed;
+ background-size: cover;
+ background-repeat: no-repeat;
 }

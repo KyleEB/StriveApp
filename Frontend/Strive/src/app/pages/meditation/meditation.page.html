@@ -8,8 +8,10 @@
 </ion-header>
 
 <ion-content>
-    <ion-button (click)="presentAlert()">?</ion-button>
-    <ion-fab class="bottom" vertical="bottom" horizontal="center">
-      <ion-fab-button (click)="play()">Breathe</ion-fab-button>
-    </ion-fab>
-</ion-content>
+    <body class="pic" [ngStyle]="{'background-image': 'url(' + chosenPic + ')'}">
+        <ion-button (click)="presentAlert()">?</ion-button>
+        <ion-fab horizontal="center" vertical="center">
+          <ion-fab-button (click)="play()">Breathe</ion-fab-button>
+        </ion-fab>
+    </body>
+  </ion-content>

@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular'
 })
 export class MeditationPage implements OnInit {
   playing:boolean = false;
+  chosenPic:string = "";
+  picDesc:string = "";
 
   constructor(
     private theme: ThemeService,
@@ -28,20 +30,50 @@ export class MeditationPage implements OnInit {
     await alert.present();
   }
 
+  async choosePic() {
+    const alert = await this.alertCtrl.create({
+      header: 'Choose Your Destination',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'Forest',
+          handler: data => {
+            this.chosenPic = '../../../assets/meditation/forest.jpg';
+            this.audio.preload('forestSounds', '../../../assets/meditation/forest.wav');
+            this.picDesc = "forest";
+          }
+        },
+        {
+          text: 'Ocean',
+          handler: data => {
+            this.chosenPic = '../../../assets/meditation/beach.jpg';
+            this.audio.preload('oceanSounds', '../../../assets/meditation/ocean.wav');
+            this.picDesc = "ocean";
+          }
+        }
+      ],
+    });
+    return await alert.present();
+  }
+
   ngOnInit() {
+    this.choosePic();
   }
 
   ngAfterViewInit(){
-
-    this.audio.preload('forestSounds', '../../../assets/meditation/forest.wav');
-    this.audio.preload('silence', '../../../assets/meditation/silence.wav');
+    this.audio.preload('silence', '../../../assets/meditation/silence.flac');
 
   }
 
   play(){
     if(this.playing == false)
     {
-      this.audio.play('forestSounds');
+      if(this.picDesc == "forest")
+      {
+        this.audio.play('forestSounds');
+      } else {
+        this.audio.play('oceanSounds');
+      }
       this.playing = true;
     } else {
       this.audio.play('silence');
