@@ -23,5 +23,6 @@ describe('RegisterPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.email).toBeNull();
   });
 });
