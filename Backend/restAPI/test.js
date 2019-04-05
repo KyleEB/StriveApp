@@ -2,6 +2,7 @@ var assert = require('assert');
 let server = require('../restAPI/server');
 let User = require('../restAPI/models/user');
 let bcrypt = require('bcrypt-nodejs');
+let UserCtrl = require('../restAPI/controllers/userCtrl');
 
 describe('Backend Testing Mocha', () => {
     describe('Print Out User Passwords', () => {
@@ -19,5 +20,25 @@ describe('Backend Testing Mocha', () => {
         });
     });
 
-    
+    describe('User Database Functions', () => {
+        let username = 'aaaa';
+        let userpasswword = 'bbbb';
+        it('Creates a User', () => {
+            let newUser = new User();
+            newUser.username = username;
+            newUser.userpasswword = userpasswword;
+            newUser.save();
+        });
+
+        it('Finds the User', () => {
+            assert.ok(User.findOne({'username' : username}));
+        });
+
+        
+        it('Removes the User', () => {
+            assert.ok(User.findOneAndDelete({'username' : username}));
+            assert.fail(User.findOne({'username': username}));
+        });
+
+    });
 });
