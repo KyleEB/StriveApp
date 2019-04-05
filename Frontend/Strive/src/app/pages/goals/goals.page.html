@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+
   <div text-center>
     <ion-button (click) = "popup()">
       Choose a new Goal!
@@ -15,13 +16,17 @@
   </div>
 
   <ion-grid style="height: 100%">
-    <ion-row justify-content-center align-items-center  style="height: 100%">
-  <ion-card *ngFor="let card of cards" text-center>
-    <h1 *ngIf='card.goal === "true"' >
-      {{card.name}}
-    </h1>
-  </ion-card>
-  </ion-row>
+    <ion-row justify-content-center align-items-center>
+      <ion-card *ngFor="let card of cards">
+        <div *ngIf='card.goal === "true"' >
+          <div class="square" text-center>
+            <div class="center">
+              <ion-card-title> {{card.name}} </ion-card-title>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+   </ion-row>
   </ion-grid>>
 
 </ion-content>

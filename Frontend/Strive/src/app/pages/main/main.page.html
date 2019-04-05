@@ -1,14 +1,23 @@
-
-
+<ion-header>
+  <ion-title padding center text-center color='dark'>Strive</ion-title>
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
+</ion-header>
 
-  <ion-card>
-    <ion-title >Welcome to Strive, {{userFullName}}! <br> Your new center of health!</ion-title>
-  </ion-card>
+
+<ion-grid style="height: 100%">
+  <ion-row justify-content-center align-items-center>
+    <ion-card class="square">
+      <div  class="center">
+        <ion-card-title>Welcome to Strive, {{userFullName}}!</ion-card-title>
+        <ion-card-subtitle>Your new center of health!</ion-card-subtitle>
+      </div>
+    </ion-card>
+  </ion-row>
+</ion-grid>
 
 
 <ion-content>

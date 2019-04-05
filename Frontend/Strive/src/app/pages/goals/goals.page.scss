@@ -1,5 +1,15 @@
-ion-card{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+.square {
+    width:300px;
+    height:300px;
+    background-size:  100% 100%;
+    background-color: cornsilk !important;
+  }
+
+.center {
+    padding-top: 25%;
+    text-align: center;
+  }
+
+.custom {
+  color: black;
 }
