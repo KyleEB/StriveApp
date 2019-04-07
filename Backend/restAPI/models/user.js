@@ -5,7 +5,8 @@ const userSchema = mongoose.Schema({
     username: {type : String},
     password: {type : String},
     email: {type : String},
-    fullname: {type : String}
+    fullname: {type : String},
+    cards: [{ name : String , goal : String}]
 });
 
 userSchema.methods.encryptPassword = (password) => {

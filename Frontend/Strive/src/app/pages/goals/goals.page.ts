@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/theme.service';
 import { AlertController } from '@ionic/angular';
 import { SelectorMatcher } from '@angular/compiler';
+import { RegisterService } from '../../services/register.service';
+import { registerContentQuery } from '@angular/core/src/render3';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-goals',
@@ -30,12 +33,18 @@ export class GoalsPage implements OnInit {
                 {"day": "Sa", "checked": "false"},
                 {"day": "Su", "checked": "false"}];
 
+  username: any;
+  password: any;
+
   constructor(
     private theme: ThemeService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private register: RegisterService,
+    private storage: Storage,
   ) {
     this.theme.storedTheme;
-   }
+    this.loadUser();
+  }
 
   async drinkWater() {
     let alert = await this.alertCtrl.create({
@@ -100,7 +109,8 @@ export class GoalsPage implements OnInit {
     return await alert.present();
   }
 
-  async popup(){
+  async popup() {
+
     let alert = await this.alertCtrl.create({
       header: 'Choose Goals!',
       cssClass: 'custom',
@@ -124,6 +134,37 @@ export class GoalsPage implements OnInit {
           }
         }
       ]
+    });
+
+    await alert.present();
+
+    this.register.updateCards(this.username, this.password, this.cards).subscribe(async res => {
+      console.log(res)
+
+      if (res.error) {
+        this.displayAlert('Card Update Error', res.error);
+      }
+
+      if (res.user) {
+        this.storage.set('cards', res.user.cards);
+      }
+    });
+  }
+
+  async loadUser() {
+    await this.storage.get('user').then((user) => {
+      console.log('your name is ' + user.fullname);
+      console.log('your username is ' + user.username);
+      this.username = user.username;
+      this.password = user.password;
+    });
+  }
+
+  async displayAlert(header, subheader) {
+    const alert = await this.alertCtrl.create({
+      header: header,
+      subHeader: subheader,
+      buttons: ['Dismiss']
     });
     return await alert.present();
   }
