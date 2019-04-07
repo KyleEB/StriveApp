@@ -18,7 +18,8 @@ export class GoalsPage implements OnInit {
   { "name": "Go to the Gym More", "goal": "false" },
   { "name": "Jog More Often", "goal": "false" },
   { "name": "Eat Healthier", "goal": "false" },
-  { "name": "Eat Less", "goal": "false" }]
+  { "name": "Eat Less", "goal": "false" }];
+
   username: any;
   password: any;
 
@@ -96,17 +97,6 @@ export class GoalsPage implements OnInit {
   }
 
   async popup() {
-    this.register.updateCards(this.username, this.password, this.cards).subscribe(async res => {
-      console.log(res)
-
-      if (res.error) {
-        this.displayAlert('Card Update Error', res.error);
-      }
-
-      if (res.user) {
-        this.storage.set('cards', res.user.cards);
-      }
-    });
 
     let alert = await this.alertCtrl.create({
       header: 'Choose Goals!',
@@ -131,6 +121,17 @@ export class GoalsPage implements OnInit {
           }
         }
       ]
+    });
+    this.register.updateCards(this.username, this.password, this.cards).subscribe(async res => {
+      console.log(res)
+
+      if (res.error) {
+        this.displayAlert('Card Update Error', res.error);
+      }
+
+      if (res.user) {
+        this.storage.set('cards', res.user.cards);
+      }
     });
     return await alert.present();
   }

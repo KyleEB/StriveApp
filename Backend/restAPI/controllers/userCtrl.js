@@ -48,7 +48,7 @@ exports.changePassword = (req, res, next) =>{
 }
 
 exports.updateCards = (req, res, next) =>{
-    passport.authenticate('local-updatecards', (err, user, info) => {
+    passport.authenticate('local-cards', (err, user, info) => {
         if(err){
             return res.status(200).json({error: err});
         }
