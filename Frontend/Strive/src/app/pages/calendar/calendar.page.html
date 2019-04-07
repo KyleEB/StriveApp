@@ -8,19 +8,29 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-item>
-		<ion-button expand="round" (click)="goDate()">Add Event</ion-button>
-		<ion-button expand="round" (click)="backToMain()">Main Menu</ion-button>
-	</ion-item>
-	
-<ion-list>
-  <ion-item *ngFor="let entry of form">
-    <ion-label>{{entry.val}}</ion-label>
-    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Completed Task!</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
-  </ion-item>
-</ion-list>
+		
+
+<div text-center>
+    <ion-button (click) = "popup()">
+      Add Event
+    </ion-button>
+  </div>
+
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center>
+      <ion-card *ngFor="let card of cards">
+        <div *ngIf='form.val === "true"' >
+          <div class="square" text-center>
+            <div class="center">
+              <ion-card-title> <ion-input placeholder="Write your notes here!"></ion-input> </ion-card-title>
+				<ion-item *ngFor="let entry of form">
+					<ion-label>{{entry.val}}</ion-label>
+					<ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+				</ion-item>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+   </ion-row>
+  </ion-grid>>
 </ion-content>
