@@ -33,4 +33,12 @@ export class RegisterService {
       password: password
     });
   }
+
+  updateCards(username, password, cards): Observable <any>{
+    return this.http.post('http://localhost:3000/api/updatecards/user', {
+      username: username,
+      password: password,
+      cards: cards
+    });
+  }
 }

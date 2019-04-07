@@ -85,3 +85,23 @@ passport.use('local-password', new LocalStrategy({
         
     });
 }));
+
+passport.use('local-updatecards', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    cardArray: 'cards',
+    passReqToCallback: true
+},
+ (req, username, password, cards, done) => { 
+    const newUser = new User();
+    newUser.cards = cards;
+    User.findOneAndUpdate({'username' : username},
+     {$set: {'cards' : newUser.cards } }, (err,user) => {
+        if(err){
+            return done(err)
+        }
+
+            return done(err, user);
+        
+    });
+}));
