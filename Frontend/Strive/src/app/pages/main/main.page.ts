@@ -15,6 +15,7 @@ import { Socket } from 'ngx-socket-io';
 export class MainPage {
 
     userFullName: any;
+    cards:any[];
 
     constructor(public router: Router,
     private reg: RegisterService,
@@ -34,6 +35,7 @@ export class MainPage {
         console.log('your name is ' + user.fullname);
         console.log('your username is ' + user.username);
         this.userFullName = user.fullname;
+        this.cards = user.cards;
       });
     }
 
@@ -42,6 +44,16 @@ export class MainPage {
       this.socket.connect();
       this.socket.emit('set-nickname', this.userFullName);
       this.router.navigateByUrl('/chat-room');
+    }
+
+    ngOnInit() {
+      this.loadCards();
+    }
+
+    async loadCards(){
+      await this.storage.get('user').then((user) => {
+        this.cards = user.cards;
+      });
     }
 
 }

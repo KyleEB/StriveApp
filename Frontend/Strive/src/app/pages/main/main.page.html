@@ -8,19 +8,27 @@
 </ion-header>
 <button ion-button full (click)="joinChat()" >Join Chat as {{ userFullName }}</button>
 
-
-<ion-grid style="height: 100%">
-  <ion-row justify-content-center align-items-center>
-    <ion-card class="square">
-      <div  class="center">
-        <ion-card-title>Welcome to Strive, {{userFullName}}!</ion-card-title>
-        <ion-card-subtitle>Your new center of health!</ion-card-subtitle>
-      </div>
-    </ion-card>
-  </ion-row>
-</ion-grid>
-
-
 <ion-content>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+      <ion-card class="square">
+        <div  class="centerCard">
+          <ion-card-title>Welcome to Strive, {{userFullName}}!</ion-card-title>
+          <ion-card-subtitle>Your new center of health!</ion-card-subtitle>
+        </div>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <h3 class = center>Current Goals:</h3>
+    <ion-row justify-content-center>
+      <div *ngFor="let card of cards">
+        <div *ngIf='card.goal === "true"' >
+          <ion-card>{{card.name}}</ion-card>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
