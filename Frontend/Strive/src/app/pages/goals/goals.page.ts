@@ -54,12 +54,14 @@ export class GoalsPage implements OnInit {
           text: "3 Bottles a Day",
           handler: data => {
             this.cards[0].goal = "true";
+            this.cardUpdate();
           }
         },
         {
           text: "Drink Every Hour",
           handler: data => {
             this.cards[1].goal = "true";
+            this.cardUpdate();
           }
         }
       ]
@@ -75,12 +77,14 @@ export class GoalsPage implements OnInit {
           text: "Go to the Gym More",
           handler: data => {
             this.cards[2].goal = "true";
+            this.cardUpdate();
           }
         },
         {
           text: "Jog More Often",
           handler: data => {
             this.cards[3].goal = "true";
+            this.cardUpdate();
           }
         }
       ]
@@ -96,16 +100,19 @@ export class GoalsPage implements OnInit {
           text: "Eat Healthier",
           handler: data => {
             this.cards[4].goal = "true";
+            this.cardUpdate();
           }
         },
         {
           text: "Eat Less",
           handler: data => {
             this.cards[5].goal = "true";
+            this.cardUpdate();
           }
         }
       ]
     });
+    
     return await alert.present();
   }
 
@@ -137,7 +144,11 @@ export class GoalsPage implements OnInit {
     });
 
     await alert.present();
+      
 
+  }
+
+  cardUpdate(){
     this.register.updateCards(this.username, this.password, this.cards).subscribe(async res => {
       console.log(res)
 
@@ -150,6 +161,8 @@ export class GoalsPage implements OnInit {
       }
     });
   }
+
+
 
   async loadUser() {
     await this.storage.get('user').then((user) => {
