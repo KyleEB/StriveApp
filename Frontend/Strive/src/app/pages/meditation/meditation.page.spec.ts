@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Storage } from '@ionic/storage'
 import { MeditationPage } from './meditation.page';
 
 describe('MeditationPage', () => {
@@ -24,4 +24,14 @@ describe('MeditationPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should not have pic', () => {
+    expect(component.picDesc).not.toBeDefined;
+  })
+
+  it('should match pic to desc', () => {
+    if(component.picDesc === "forest"){
+      expect(component.chosenPic).toBe('../../../assets/meditation/forest.jpg');
+    }
+  })
 });
