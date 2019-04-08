@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/theme.service';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-blog',
@@ -11,6 +11,7 @@ export class BlogPage implements OnInit {
 
 	constructor(
 		private theme: ThemeService,
+		private alertCtrl: AlertController,
 		public nav: NavController
 	) {
 		this.theme.storedTheme;
@@ -18,4 +19,14 @@ export class BlogPage implements OnInit {
 	
 	ngOnInit() {
 	}
+
+	async presentAlert() {
+		const alert = await this.alertCtrl.create({
+		  header: 'Blog',
+		  message: 'On this page you can post your thoughts and achievements as well as see your friends posts',
+		  buttons: ['OK']
+		});
+	
+		await alert.present();
+	  }
 }

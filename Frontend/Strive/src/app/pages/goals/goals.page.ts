@@ -177,4 +177,13 @@ export class GoalsPage implements OnInit {
     card.goal = "false";
   }
 
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Goals',
+      message: 'Here you can see your current goals and set new ones!',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
 }

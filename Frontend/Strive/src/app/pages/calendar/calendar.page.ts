@@ -70,6 +70,16 @@ public form = [
 
   ngOnInit() {
   }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'To-Do',
+      message: 'On this page you can list tasks and goals you want to achieve!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
   
   
