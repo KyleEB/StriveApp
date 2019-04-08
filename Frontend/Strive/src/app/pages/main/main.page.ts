@@ -1,10 +1,11 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../services/register.service';
-import { LoadingController, AlertController, MenuController } from '@ionic/angular';
+import { LoadingController, AlertController, MenuController, NavController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage'
 import { ThemeService } from 'src/app/theme.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-main',
@@ -21,7 +22,9 @@ export class MainPage {
     private alertCtrl: AlertController,
     private storage: Storage,
     private menu: MenuController,
-    private theme: ThemeService){
+    private theme: ThemeService,
+    private socket: Socket,
+    private navCtrl: NavController){
       this.loadUser();
       this.theme.storedTheme;
     }
@@ -32,8 +35,13 @@ export class MainPage {
         console.log('your username is ' + user.username);
         this.userFullName = user.fullname;
       });
-      
-      
+    }
+
+    //from devdactic also
+    joinChat() {
+      this.socket.connect();
+      this.socket.emit('set-nickname', this.userFullName);
+      this.router.navigateByUrl('/chat-room');
     }
 
 }

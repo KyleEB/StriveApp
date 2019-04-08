@@ -25,7 +25,7 @@ describe('Backend Testing Mocha', () => {
         let userpasswword = 'bbbb';
         it('Creates a User', () => {
             let newUser = new User();
-            newUser.username = username;
+            newUser.username = '';
             newUser.userpasswword = userpasswword;
             newUser.save();
         });

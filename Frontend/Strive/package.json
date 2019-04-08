@@ -37,6 +37,7 @@
     "jasmine": "^3.3.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.5",
+    "ngx-socket-io": "^2.1.1",
     "null-loader": "^0.1.1",
     "rxjs": "~6.3.3",
     "ts-loader": "^5.3.3",
