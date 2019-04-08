@@ -183,11 +183,12 @@ export class GoalsPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.loadCards();
   }
 
   deleteCard(card){
     card.goal = "false";
+    this.cardUpdate();
   }
 
   async presentAlert() {
@@ -197,6 +198,12 @@ export class GoalsPage implements OnInit {
       buttons: ['OK']
     });
     await alert.present();
+  }
+
+  async loadCards(){
+    await this.storage.get('user').then((user) => {
+      this.cards = user.cards;
+    });
   }
 
 }
