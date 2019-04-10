@@ -14,7 +14,7 @@ interface Sound {
 })
 export class AudioService {
 
-  private sounds: Sound[] = [];
+  public sounds: Sound[] = [];
   private audioPlayer: HTMLAudioElement = new Audio();
   private forceWebAudio: boolean = true;
 
@@ -49,25 +49,31 @@ export class AudioService {
 
   }
 
-  play(key: string): void {
+  play(key: string): boolean {
 
     let soundToPlay = this.sounds.find((sound) => {
       return sound.key === key;
     });
+    if (soundToPlay != null){
+      if(soundToPlay.isNative){
 
-    if(soundToPlay.isNative){
+        this.nativeAudio.play(soundToPlay.asset).then((res) => {
+          console.log(res);
+          return true;
+        }, (err) => {
+          console.log(err);
+          return false;
+        });
 
-      this.nativeAudio.play(soundToPlay.asset).then((res) => {
-        console.log(res);
-      }, (err) => {
-        console.log(err);
-      });
+      } else {
 
-    } else {
-
-      this.audioPlayer.src = soundToPlay.asset;
-      this.audioPlayer.play();
-
+        this.audioPlayer.src = soundToPlay.asset;
+        this.audioPlayer.play();
+        return true;
+      }
+    }
+    else {
+      return false;
     }
 
   }
