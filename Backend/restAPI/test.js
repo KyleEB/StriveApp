@@ -23,15 +23,15 @@ describe('Backend Testing Mocha', () => {
     describe('User Database Functions', () => {
         let username = 'aaaa';
         let userpasswword = 'bbbb';
+        let newUser = new User();
         it('Creates a User', () => {
-            let newUser = new User();
             newUser.username = '';
             newUser.userpasswword = userpasswword;
             newUser.save();
         });
 
         it('Finds the User', () => {
-            assert.ok(User.findOne({'username' : username}));
+            assert.equal(User.findOne({'username' : username}), newUser);
         });
 
         

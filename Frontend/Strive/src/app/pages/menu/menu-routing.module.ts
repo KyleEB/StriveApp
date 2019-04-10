@@ -12,6 +12,7 @@ import { GoalsPage } from '../goals/goals.page';
 import { AchievementsPage } from '../goals/achievements/achievements.page';
 import { CalendarPage } from '../calendar/calendar.page';
 import { DatesPage } from '../calendar/dates/dates.page';
+import { ChatRoomPage } from 'src/app/chat-room/chat-room.page';
 
 const routes: Routes = [
   {
@@ -67,6 +68,11 @@ const routes: Routes = [
         path: 'profile',
         outlet: 'menucontent',
         component: ProfilePage
+      },
+      {
+        path: 'chat',
+        outlet: 'menucontent',
+        component: ChatRoomPage
       },
 	  {
 		path: 'dates',

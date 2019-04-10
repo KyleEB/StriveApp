@@ -43,7 +43,7 @@ export class MainPage {
     joinChat() {
       this.socket.connect();
       this.socket.emit('set-nickname', this.userFullName);
-      this.router.navigateByUrl('/chat-room');
+      this.navCtrl.navigateRoot("menu/(menucontent:chat)");
     }
 
     ngOnInit() {
