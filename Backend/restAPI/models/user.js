@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = mongoose.Schema({
-    username: {type : String},
+    username: {type : String},// {type : Boolean}, to make fail case 
     password: {type : String},
     email: {type : String},
     fullname: {type : String},

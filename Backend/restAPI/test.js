@@ -1,4 +1,6 @@
 var assert = require('assert');
+const chai = require('chai');
+const expect = chai.expect;
 let server = require('../restAPI/server');
 let User = require('../restAPI/models/user');
 let bcrypt = require('bcrypt-nodejs');
@@ -7,7 +9,7 @@ let UserCtrl = require('../restAPI/controllers/userCtrl');
 describe('Backend Testing Mocha', () => {
     describe('Print Out User Passwords', () => {
         it('Check every user has a password', () => {
-            assert.toString(User.find("password"));
+           assert(User.find('password'));
         });
     });
 
@@ -21,23 +23,18 @@ describe('Backend Testing Mocha', () => {
     });
 
     describe('User Database Functions', () => {
-        let username = 'aaaa';
-        let userpasswword = 'bbbb';
+        let username = 'testName';
+        let userpassword = 'testPassword';
         let newUser = new User();
-        it('Creates a User', () => {
-            newUser.username = '';
-            newUser.userpasswword = userpasswword;
+        it('Creates a User and checks if name is correct', () => {
+            newUser.username = username;
+            newUser.userpassword = userpassword;
             newUser.save();
+            assert.equal(newUser.username, username);
         });
 
-        it('Finds the User', () => {
-            assert.equal(User.findOne({'username' : username}), newUser);
-        });
-
-        
-        it('Removes the User', () => {
-            assert.ok(User.findOneAndDelete({'username' : username}));
-            assert.fail(User.findOne({'username': username}));
+        it('Finds and Deletes the User', () => {
+            assert(User.findOneAndDelete({'username' : username}));
         });
 
     });
