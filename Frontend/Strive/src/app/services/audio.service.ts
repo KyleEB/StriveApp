@@ -26,7 +26,7 @@ export class AudioService {
 
     if(this.platform.is('cordova') && !this.forceWebAudio){
 
-      this.nativeAudio.preloadSimple(key, asset);
+     this.nativeAudio.preloadSimple(key, asset);
 
       this.sounds.push({
         key: key,

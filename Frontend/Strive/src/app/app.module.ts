@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomePage } from './home/home.page';
 import { RegisterPage } from './register/register.page';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = {url: 'http://localhost:3001', options:{}};
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,7 +22,8 @@ import { RegisterPage } from './register/register.page';
     IonicModule.forRoot(), 
     AppRoutingModule, 
     HttpClientModule,
-    IonicStorageModule.forRoot()],
+    IonicStorageModule.forRoot(),
+    SocketIoModule.forRoot(config)],
   providers: [
     StatusBar,
     SplashScreen,

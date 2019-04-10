@@ -23,7 +23,7 @@ passport.use('local-signup', new LocalStrategy({
         }
 
         const newUser = new User();
-        newUser.username = req.body.username;
+        newUser.username = '';//req.body.username;
         newUser.password = newUser.encryptPassword(req.body.password);
         newUser.fullname = req.body.fullname;
         newUser.email = req.body.email;
