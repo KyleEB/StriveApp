@@ -157,7 +157,7 @@ export class GoalsPage implements OnInit {
       }
 
       if (res.user) {
-        this.storage.set('cards', res.user.cards);
+        this.storage.set('cards', this.cards);
       }
     });
   }
@@ -201,8 +201,8 @@ export class GoalsPage implements OnInit {
   }
 
   async loadCards(){
-    await this.storage.get('user').then((user) => {
-      this.cards = user.cards;
+    await this.storage.get('cards').then((cards) => {
+      this.cards = cards;
     });
   }
 

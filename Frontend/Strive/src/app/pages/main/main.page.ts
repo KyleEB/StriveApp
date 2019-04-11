@@ -51,13 +51,14 @@ export class MainPage {
     }
 
     async loadCards(){
-      await this.storage.get('user').then((user) => {
-        this.cards = user.cards;
+      await this.storage.get('cards').then((cards) => {
+        this.cards = cards;
       });
     }
 
     ionViewWillEnter() {
       this.menu.enable(true);
+      this.loadCards();
     }
 
 }
