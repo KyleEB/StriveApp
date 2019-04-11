@@ -56,4 +56,8 @@ export class MainPage {
       });
     }
 
+    ionViewWillEnter() {
+      this.menu.enable(true);
+    }
+
 }
