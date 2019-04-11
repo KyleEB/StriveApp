@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalendarPage } from './calendar.page';
+import { ExpectedConditions } from 'protractor';
 
 describe('CalendarPage', () => {
   let component: CalendarPage;
@@ -23,5 +24,19 @@ describe('CalendarPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('add should exist', () => {
+      expect(component.add()).toBeDefined();
+  }); 
+
+  it('popup should exist', () => {
+    expect(component.popup()).toBeDefined();
+  });
+
+  it('should contain', () => {
+    let val = 'event';
+    let isChecked = false;
+    expect(component.form).toBeDefined();
   });
 });

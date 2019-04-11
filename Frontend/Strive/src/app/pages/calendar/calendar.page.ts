@@ -19,8 +19,8 @@ public form = [
   constructor(
     private theme: ThemeService,
     private alertCtrl: AlertController,
-	private nav:NavController
-  ) {
+	  private nav:NavController
+    ) {
     this.theme.storedTheme;
    }
 
@@ -61,8 +61,8 @@ public form = [
           text: "save",
           handler: data => {
             this.add();
-			}
-		}
+			    }
+		  }
       ]
     });
     return await alert.present();
@@ -74,7 +74,7 @@ public form = [
   async presentAlert() {
     const alert = await this.alertCtrl.create({
       header: 'To-Do',
-      message: 'On this page you can list tasks and goals you want to achieve!',
+      message: 'This ',
       buttons: ['OK']
     });
 
