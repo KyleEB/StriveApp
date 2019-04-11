@@ -206,4 +206,8 @@ export class GoalsPage implements OnInit {
     });
   }
 
+  ionViewWillEnter(){
+    this.loadUser();
+    this.loadCards();
+  }
 }
