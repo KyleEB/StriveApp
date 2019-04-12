@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: './goals.page.html',
   styleUrls: ['./goals.page.scss'],
 })
-export class GoalsPage implements OnInit {
+export class GoalsPage {
 
   public cards = [{"name": "3 Bottles a Day", "goal": "false", "desc": "How many bottles have you drank today?  Check them as you go!", "achieved": "false"},
                  {"name": "Drink Every Hour", "goal": "false", "desc": "Have you drank every hour today?"},
@@ -20,6 +20,14 @@ export class GoalsPage implements OnInit {
                  {"name": "Eat Healthier", "goal": "false", "desc": "Remember to make good health choices! Are you happy with what you ate today?", "achieved": "false"},
                  {"name": "Eat Less", "goal": "false", "desc": "Eat less food more, but more times a day! Are you happy with your meal sizes today?", "achieved": "false"}
 ]
+
+  private cardTemplate = [{"name": "3 Bottles a Day", "goal": "false", "desc": "How many bottles have you drank today?  Check them as you go!"},
+   {"name": "Drink Every Hour", "goal": "false", "desc": "Have you drank every hour today?"},
+  {"name": "Go to the Gym More", "goal": "false", "desc": "Have you gone to the gym today? Check off each day you go this week!"},
+  {"name": "Jog More Often", "goal": "false", "desc": "Have you jogged today? Check off each day you go this week!"},
+  {"name": "Eat Healthier", "goal": "false", "desc": "Remember to make good health choices! Are you happy with what you ate today?"},
+  {"name": "Eat Less", "goal": "false", "desc": "Eat less food more, but more times a day! Are you happy with your meal sizes today?"},
+  {"name": "", "goal": "false", "desc": ""}];
 
   public bottles = [{"bottlenum": 1, "checked":"false"},
                     {"bottlenum": 2, "checked": "false"},
@@ -190,10 +198,6 @@ export class GoalsPage implements OnInit {
     return await alert.present();
   }
 
-  ngOnInit() {
-    this.loadCards();
-  }
-
   deleteCard(card){
     card.goal = "false";
     this.cardUpdate();
@@ -210,7 +214,9 @@ export class GoalsPage implements OnInit {
 
   async loadCards(){
     await this.storage.get('cards').then((cards) => {
+      if(cards != null){
       this.cards = cards;
+      }
     });
   }
 
