@@ -29,21 +29,9 @@ public form = [
       header: 'Add Checklist',
       buttons: [
         {
-          text: "Task2",
+          text: "Yes",
           handler: data => {
             this.form[1].val = "true";
-          }
-        },
-		{
-          text: "Task2",
-          handler: data => {
-            this.form[2].val = "true";
-          }
-        },
-        {
-          text: "Task3",
-          handler: data => {
-            this.form[3].val = "true";
           }
         }
       ]
@@ -74,7 +62,7 @@ public form = [
   async presentAlert() {
     const alert = await this.alertCtrl.create({
       header: 'To-Do',
-      message: 'This ',
+      message: 'This is where you can keep track of your goals!',
       buttons: ['OK']
     });
 
