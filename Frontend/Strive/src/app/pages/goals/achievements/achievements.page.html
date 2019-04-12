@@ -9,4 +9,19 @@
 
 <ion-content>
   <ion-button (click)="presentAlert()">?</ion-button><br>
+  <ion-grid>
+      <h3 class = center>Your Personal Achievements:</h3>
+      <ion-row justify-content-center>
+        <div *ngFor="let card of cards">
+          <div *ngIf='card.achieved === "true"' >
+            <ion-card>
+              <ion-card-title float-left>{{card.name}}</ion-card-title>
+              <ion-button  float-right (click)="deleteAch(card)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-card>
+          </div>
+        </div>
+      </ion-row>
+    </ion-grid>
 </ion-content>
