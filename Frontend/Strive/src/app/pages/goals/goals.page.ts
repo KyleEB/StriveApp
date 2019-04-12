@@ -13,25 +13,33 @@ import { Storage } from '@ionic/storage';
 })
 export class GoalsPage implements OnInit {
 
-  public cards = [{"name": "3 Bottles a Day", "goal": "false", "desc": "How many bottles have you drank today?  Check them as you go!"},
+  public cards = [{"name": "3 Bottles a Day", "goal": "false", "desc": "How many bottles have you drank today?  Check them as you go!", "achieved": "false"},
                  {"name": "Drink Every Hour", "goal": "false", "desc": "Have you drank every hour today?"},
-                 {"name": "Go to the Gym More", "goal": "false", "desc": "Have you gone to the gym today? Check off each day you go this week!"},
-                 {"name": "Jog More Often", "goal": "false", "desc": "Have you jogged today? Check off each day you go this week!"},
-                 {"name": "Eat Healthier", "goal": "false", "desc": "Remember to make good health choices! Are you happy with what you ate today?"},
-                 {"name": "Eat Less", "goal": "false", "desc": "Eat less food more, but more times a day! Are you happy with your meal sizes today?"},
-                 {"name": "", "goal": "false", "desc": ""}];
+                 {"name": "Go to the Gym More", "goal": "false", "desc": "Have you gone to the gym today? Check off each day you go this week!", "achieved": "false"},
+                 {"name": "Jog More Often", "goal": "false", "desc": "Have you jogged today? Check off each day you go this week!", "achieved": "false"},
+                 {"name": "Eat Healthier", "goal": "false", "desc": "Remember to make good health choices! Are you happy with what you ate today?", "achieved": "false"},
+                 {"name": "Eat Less", "goal": "false", "desc": "Eat less food more, but more times a day! Are you happy with your meal sizes today?", "achieved": "false"}
+]
 
   public bottles = [{"bottlenum": 1, "checked":"false"},
                     {"bottlenum": 2, "checked": "false"},
                     {"bottlenum": 3, "checked": "false"}];
 
-  public days = [{"day": "M", "checked": "false"},
+  public jogDays = [{"day": "M", "checked": "false"},
                 {"day": "T", "checked": "false"},
                 {"day": "W", "checked": "false"},
                 {"day": "Th", "checked": "false"},
                 {"day": "F", "checked": "false"},
                 {"day": "Sa", "checked": "false"},
                 {"day": "Su", "checked": "false"}];
+
+  public gymDays = [{"day": "M", "checked": "false"},
+  {"day": "T", "checked": "false"},
+  {"day": "W", "checked": "false"},
+  {"day": "Th", "checked": "false"},
+  {"day": "F", "checked": "false"},
+  {"day": "Sa", "checked": "false"},
+  {"day": "Su", "checked": "false"}];
 
   username: any;
   password: any;
@@ -209,5 +217,43 @@ export class GoalsPage implements OnInit {
   ionViewWillEnter(){
     this.loadUser();
     this.loadCards();
+  }
+
+  bottleCheck(card, bottle){
+    console.log(card);
+    bottle.checked = "true";
+    let num: any = 0;
+    for(num;num < 3; num++){
+      if(this.bottles[num].checked === "false"){
+        return;
+      }
+    }
+    this.congratulate(card);
+  }
+
+  dayCheck(card, day){
+    day.checked = "true";
+    let num: any = 0;
+    for(num;num < 7; num++){
+      if(this.jogDays[num].checked === "false" && card.name === "Jog More Often"){
+        return;
+      }
+      if(this.gymDays[num].checked === "false" && card.name === "Go to the Gym More"){
+        return;
+      }
+    }
+    this.congratulate(card);
+  }
+
+  async congratulate(card) {
+    card.goal = "false";
+    card.achieved = "true";
+    this.cardUpdate();
+    const alert = await this.alertCtrl.create({
+      header: 'Congratulations',
+      message: 'You earned an achievement! Go check it out in the achievements tab',
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 }
