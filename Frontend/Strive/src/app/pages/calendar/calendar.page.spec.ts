@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { CalendarPage } from './calendar.page';
 import { ExpectedConditions } from 'protractor';
@@ -7,9 +7,9 @@ import { ExpectedConditions } from 'protractor';
 describe('CalendarPage', () => {
   let component: CalendarPage;
   let fixture: ComponentFixture<CalendarPage>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  fakeAsync(() => {
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
       declarations: [ CalendarPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
@@ -27,16 +27,29 @@ describe('CalendarPage', () => {
   });
 
   it('add should exist', () => {
-      expect(component.add()).toBeDefined();
+    component.add();
+    fixture.detectChanges();
+    expect(component.add()).toBeDefined();
   }); 
 
   it('popup should exist', () => {
+    component.popup();
+    fixture.detectChanges();
     expect(component.popup()).toBeDefined();
   });
 
-  it('should contain', () => {
-    let val = 'event';
-    let isChecked = false;
+  it('form should exist', () => {
     expect(component.form).toBeDefined();
   });
+
+  it('should have task listed', () => {
+    let form = [
+      { val: 'Hello', isChecked: false },
+      { val: 'Bye', isChecked: false },
+      { val: 'Later', isChecked: false }
+    ];
+    fixture.detectChanges();
+    expect(component.form[1]).toBe(component.form[1], this.form[1]);
+  });
+});
 });
