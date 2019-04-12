@@ -164,20 +164,17 @@ export class GoalsPage {
         this.displayAlert('Card Update Error', res.error);
       }
 
-      if (res.user) {
         this.storage.set('cards', this.cards);
-      }
     });
   }
 
-
-
-  async loadUser() {
-    await this.storage.get('user').then((user) => {
+   loadUser() {
+      this.storage.get('user').then((user) => {
       console.log('your name is ' + user.fullname);
       console.log('your username is ' + user.username);
       this.username = user.username;
       this.password = user.password;
+      this.cards = user.cards;
     });
   }
 
@@ -204,16 +201,11 @@ export class GoalsPage {
     await alert.present();
   }
 
-  async loadCards(){
-    await this.storage.get('cards').then((cards) => {
-      if(cards != null){
-      this.cards = cards;
-      }
-    });
-  }
-
   ionViewWillEnter(){
     this.loadUser();
-    this.loadCards();
+  }
+
+  ionViewWillLeave(){
+    this.cardUpdate();
   }
 }
