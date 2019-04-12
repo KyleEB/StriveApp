@@ -29,27 +29,26 @@ describe('CalendarPage', () => {
   it('add should exist', () => {
     component.add();
     fixture.detectChanges();
-    expect(component.add()).toBeDefined();
-  }); 
+    expect(component.add()).toBeDefined;
+  })
 
   it('popup should exist', () => {
     component.popup();
     fixture.detectChanges();
-    expect(component.popup()).toBeDefined();
-  });
+    expect(component.popup()).toBeDefined;
+  })
 
   it('form should exist', () => {
-    expect(component.form).toBeDefined();
-  });
+    expect(component.form).toBeDefined;
+  })
 
   it('should have task listed', () => {
     let form = [
-      { val: 'Hello', isChecked: false },
-      { val: 'Bye', isChecked: false },
-      { val: 'Later', isChecked: false }
+      { val: 'Hello', isChecked: true },
+      { val: 'Bye', isChecked: true },
+      { val: 'Later', isChecked: true }
     ];
-    fixture.detectChanges();
-    expect(component.form[1]).toBe(component.form[1], this.form[1]);
-  });
+    expect(component.form).toBe(this.form);
+  })
 });
 });
