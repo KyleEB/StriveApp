@@ -11,7 +11,7 @@
   <ion-button (click)="presentAlert()">?</ion-button><br>
   <h3 text-center>Your Personal Achievements:</h3>
   <ion-grid>
-    <ion-row>
+    <ion-row justify-content-center align-items-center>
       <ion-card *ngFor="let card of cards">
         <div *ngIf='card.achieved === "true"' >
           <div class="square" text-center>

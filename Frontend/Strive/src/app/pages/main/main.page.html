@@ -21,14 +21,13 @@
   </ion-grid>
 
   <ion-grid>
-    <h3 class = center>Current Goals:</h3>
-    <ion-row justify-content-center>
-      <div *ngFor="let card of cards">
+    <h3 class=center>Current Goals:</h3>
+    <ion-row justify-content-center align-items-center>
+      <ion-item *ngFor="let card of cards" lines="none">
         <div *ngIf='card.goal === "true"' >
           <ion-card>{{card.name}}</ion-card>
         </div>
-      </div>
+      </ion-item>
     </ion-row>
   </ion-grid>
-
 </ion-content>
