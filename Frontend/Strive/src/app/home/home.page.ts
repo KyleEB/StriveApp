@@ -73,6 +73,7 @@ export class HomePage {
   }
   
   removeUserLocalStorage(){
-    return this.storage.remove('username');
+    this.storage.remove('cards');
+    return this.storage.remove('user');
   }
 }

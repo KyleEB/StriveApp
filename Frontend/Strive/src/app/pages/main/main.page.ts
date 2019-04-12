@@ -26,16 +26,15 @@ export class MainPage {
     private theme: ThemeService,
     private socket: Socket,
     private navCtrl: NavController){
-      this.loadUser();
       this.theme.storedTheme;
     }
 
-    async loadUser(){
-       await this.storage.get('user').then((user) => {
+    loadUser(){
+        this.storage.get('user').then((user) => {
         console.log('your name is ' + user.fullname);
         console.log('your username is ' + user.username);
         this.userFullName = user.fullname;
-        this.cards = user.cards;
+        this.storage.set('cards', user.cards);
       });
     }
 
@@ -46,18 +45,16 @@ export class MainPage {
       this.navCtrl.navigateRoot("menu/(menucontent:chat)");
     }
 
-    ngOnInit() {
-      this.loadCards();
-    }
 
-    async loadCards(){
-      await this.storage.get('cards').then((cards) => {
+     loadCards(){
+        this.storage.get('cards').then((cards) => {
         this.cards = cards;
       });
     }
 
     ionViewWillEnter() {
       this.menu.enable(true);
+      this.loadUser();
       this.loadCards();
     }
 
