@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage implements OnInit {
-  public cards = [{"name": "New Event", "task": "false", "desc": ""}];
+public cards = [{"name": "New Event", "task": "false", "checklist": "false"}];
 public form = [
       { val: 'Task 1', isChecked: false },
       { val: 'Task 2', isChecked: false },
@@ -32,6 +32,14 @@ public form = [
           text: "Yes",
           handler: data => {
             this.cards[0].task = "true";
+            this.cards[0].checklist = "true";
+          }
+        },
+        {
+          text: "No",
+          handler: data => {
+            this.cards[0].task = "true";
+            this.cards[0].checklist = "False";
           }
         }
       ]
