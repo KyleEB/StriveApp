@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/theme.service';
 import { NavController, AlertController } from '@ionic/angular';
+import { timeout } from 'q';
 import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-blog',
@@ -9,9 +10,11 @@ import { Storage } from '@ionic/storage';
 })
 export class BlogPage implements OnInit {
 
-	public feed = [];
 	public fullname:string;
 	public time:any;
+	public currentfeed;
+
+	public myfeed = [];
 
 	constructor(
 		private theme: ThemeService,
@@ -21,6 +24,15 @@ export class BlogPage implements OnInit {
 		
 	) {
 		this.theme.storedTheme;
+		
+		static feed = class {
+			post: string;
+			timestamp: any;
+			counstructor(post:string,time:any){
+				this.post = post;
+				this.timestamp = time;
+			}
+		}
 	}
 	
 	ngOnInit() {
@@ -52,7 +64,8 @@ export class BlogPage implements OnInit {
 							console.log(JSON.stringify(data));
 							console.log(data.Post);
 							this.time = Date.now();
-							this.feed.push(data.Post);
+							this.currentfeed = new feed(data.Post, this.time)
+							this.myfeed.push(this.currentfeed);
 						}
 					}
 				]
@@ -66,5 +79,9 @@ export class BlogPage implements OnInit {
 				console.log('your username is ' + user.username);
 				this.fullname = user.fullname;
 			});
+		}
+
+		ionViewWillEnter(){
+			this.loadUser();
 		}
 }

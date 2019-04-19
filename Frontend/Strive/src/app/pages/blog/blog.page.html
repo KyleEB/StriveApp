@@ -10,8 +10,9 @@
 <ion-content>
 	<ion-button (click)="presentAlert()">?</ion-button>
 	<ion-button float-right (click)="blogPost()">New Post</ion-button>
-	<ion-card *ngFor='let post of feed'>
+  <ion-header text-center>My Feed</ion-header>
+  <ion-card *ngFor='let feed of myfeed'>
 		<ion-card-content>{{fullname}}</ion-card-content>
-		<ion-card-content>{{post}}</ion-card-content>
+		<ion-card-content>{{feed.post}}</ion-card-content>
 	</ion-card>
 </ion-content>
