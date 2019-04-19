@@ -3,10 +3,12 @@ import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testi
 
 import { CalendarPage } from './calendar.page';
 import { ExpectedConditions } from 'protractor';
+import { Component } from '@angular/compiler/src/core';
 
 describe('CalendarPage', () => {
   let component: CalendarPage;
   let fixture: ComponentFixture<CalendarPage>;
+  
   fakeAsync(() => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -37,18 +39,16 @@ describe('CalendarPage', () => {
     fixture.detectChanges();
     expect(component.popup()).toBeDefined;
   })
-
-  it('form should exist', () => {
-    expect(component.form).toBeDefined;
-  })
-
-  it('should have task listed', () => {
-    let form = [
-      { val: 'Hello', isChecked: true },
-      { val: 'Bye', isChecked: true },
-      { val: 'Later', isChecked: true }
-    ];
-    expect(component.form).toBe(this.form);
-  })
 });
+
+  it('isChecked should be false', () => {
+    let form = component;
+    expect(this.form[0].isChecked).toBe(false);
+    console.log(form[0]);
+  })
+
+  it('Checklist should not be true', () => {
+    expect(component.cards[0].checklist).toBe('false');
+  })
+
 });

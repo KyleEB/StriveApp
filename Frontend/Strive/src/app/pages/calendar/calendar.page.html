@@ -23,7 +23,11 @@
           <div class="square" text-center>
             <div class="center">
               <ion-card-title>New Event</ion-card-title>
+                <ion-label>{{Event}}</ion-label>
                   <ion-card-content>
+                      <ion-item>
+                        <ion-label>{{event}}</ion-label>
+                      </ion-item>
                     <ion-row *ngIf='card.checklist === "true"'>
                       <ion-item *ngFor="let entry of form">
                         <ion-label>{{entry.val}}</ion-label>

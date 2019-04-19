@@ -9,37 +9,38 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage implements OnInit {
-public cards = [{"name": "New Event", "task": "false", "checklist": "false"}];
+public cards = [{"name": "New Event", "task": "false", "checklist": "true"}];
 public form = [
       { val: 'Task 1', isChecked: false },
       { val: 'Task 2', isChecked: false },
       { val: 'Task 3', isChecked: false }
     ];
+  
+  eventName: any;
+  time: any;
 
   constructor(
     private theme: ThemeService,
-    private alertCtrl: AlertController,
-	  private nav:NavController
-    ) {
+    private alertCtrl: AlertController    ) {
     this.theme.storedTheme;
    }
 
   async add() {
     let alert = await this.alertCtrl.create({
-      header: 'Add Checklist',
+      header: 'Add Checklist?',
       buttons: [
         {
           text: "Yes",
-          handler: data => {
+          handler: () => {
             this.cards[0].task = "true";
             this.cards[0].checklist = "true";
           }
         },
         {
           text: "No",
-          handler: data => {
+          handler: () => {
             this.cards[0].task = "true";
-            this.cards[0].checklist = "False";
+            this.cards[0].checklist = "false";
           }
         }
       ]
@@ -52,13 +53,29 @@ public form = [
     let alert = await this.alertCtrl.create({
       header: 'New Event',
       cssClass: 'custom',
-      buttons: [
+      inputs: [
+        {
+          type: 'text',
+          name: 'event',
+          placeholder: 'Event Name'
+        },
+        {
+          type: 'text',
+          name: 'time',
+          placeholder: 'Time'
+        },
+        {
+          type: 'text',
+          name: 'location',
+          placeholder: 'Location'
+        }
+      ],buttons: [
 	    {
           text: "save",
-          handler: data => {
+          handler: () => {
             this.add();
 			    }
-		  }
+      }
       ]
     });
     return await alert.present();
