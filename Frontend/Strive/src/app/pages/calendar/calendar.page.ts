@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../theme.service'
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-calendar',
@@ -9,15 +10,15 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage implements OnInit {
+  event: any;
+  time: any;
+  location: any;
 public cards = [{"name": "New Event", "task": "false", "checklist": "true"}];
 public form = [
       { val: 'Task 1', isChecked: false },
       { val: 'Task 2', isChecked: false },
       { val: 'Task 3', isChecked: false }
     ];
-  
-  eventName: any;
-  time: any;
 
   constructor(
     private theme: ThemeService,
@@ -72,7 +73,13 @@ public form = [
       ],buttons: [
 	    {
           text: "save",
-          handler: () => {
+          handler: data => {
+            if(typeof event != null){
+              this.event = data.event;
+              this.time =data.time;
+              this.location = data.location;
+            }
+            console.log(data);
             this.add();
 			    }
       }
