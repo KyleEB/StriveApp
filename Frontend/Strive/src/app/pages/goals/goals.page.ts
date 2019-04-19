@@ -51,6 +51,7 @@ export class GoalsPage {
 
   username: any;
   password: any;
+  user: any;
 
   constructor(
     private theme: ThemeService,
@@ -164,15 +165,17 @@ export class GoalsPage {
 
   }
 
-  cardUpdate(){
+  async cardUpdate(){
+    await this.storage.set('cards', this.cards);
     this.register.updateCards(this.username, this.password, this.cards).subscribe(async res => {
       console.log(res)
 
       if (res.error) {
         this.displayAlert('Card Update Error', res.error);
       }
-
-        this.storage.set('cards', this.cards);
+      this.user.cards = this.cards;
+       await this.storage.set('user', this.user);
+        
     });
   }
 
@@ -182,6 +185,7 @@ export class GoalsPage {
       console.log('your username is ' + user.username);
       this.username = user.username;
       this.password = user.password;
+      this.user = user;
       this.cards = user.cards;
     });
   }
