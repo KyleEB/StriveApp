@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../theme.service'
-import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -9,29 +8,41 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage implements OnInit {
-  public cards = [{"name": "New Event", "task": "false", "desc": ""}];
+  event: any;
+  time: any;
+  location: any;
+public cards = [{"name": "New Event", "task": "false", "checklist": "false"}];
 public form = [
-      { val: 'Task 1', isChecked: false },
-      { val: 'Task 2', isChecked: false },
-      { val: 'Task 3', isChecked: false }
+      { val: 'Task1', isChecked: false },
+      { val: 'Task2', isChecked: false },
+      { val: 'Task3', isChecked: false }
     ];
 
   constructor(
     private theme: ThemeService,
-    private alertCtrl: AlertController,
-	  private nav:NavController
-    ) {
+    private alertCtrl: AlertController    ) {
     this.theme.storedTheme;
    }
 
   async add() {
     let alert = await this.alertCtrl.create({
-      header: 'Add Checklist',
+      header: 'Add Checklist?',
+      cssClass: 'custom',
       buttons: [
         {
           text: "Yes",
-          handler: data => {
+          handler: () => {
+            this.customizeForm();
             this.cards[0].task = "true";
+            this.cards[0].checklist = "true";
+            console.log(this.form);
+          }
+        },
+        {
+          text: "No",
+          handler: () => {
+            this.cards[0].task = "true";
+            this.cards[0].checklist = "false";
           }
         }
       ]
@@ -44,18 +55,75 @@ public form = [
     let alert = await this.alertCtrl.create({
       header: 'New Event',
       cssClass: 'custom',
-      buttons: [
+      inputs: [
+        {
+          type: 'text',
+          name: 'event',
+          placeholder: 'Event Name'
+        },
+        {
+          type: 'text',
+          name: 'time',
+          placeholder: 'Time'
+        },
+        {
+          type: 'text',
+          name: 'location',
+          placeholder: 'Location'
+        }
+      ],buttons: [
 	    {
           text: "save",
           handler: data => {
+            if(typeof event != null){
+              this.event = data.event;
+              this.time =data.time;
+              this.location = data.location;
+            }
+            console.log(data);
             this.add();
 			    }
-		  }
+      }
       ]
     });
     return await alert.present();
   }
-
+async customizeForm(){
+    let alert = await this.alertCtrl.create({
+      cssClass:'custom',
+      inputs: [
+        {
+          type: 'text',
+          name: 'task1',
+          placeholder: 'New Task'
+        },
+        {
+          type: 'text',
+          name: 'task2',
+          placeholder: 'New Task'
+        },
+        {
+          type: 'text',
+          name: 'task3',
+          placeholder: 'New Task'
+        }
+      ],
+      buttons: [
+        {
+          text: 'next',
+          handler: data => {
+          if(this.form)
+            this.form[0].val = data.task1;
+            this.form[1].val = data.task2;
+            this.form[2].val = data.task3;
+            console.log(this.form);
+            this.cards[0].checklist = "true";
+          }
+        }
+      ]
+    });
+    return await alert.present();
+  }
   ngOnInit() {
   }
 
@@ -68,6 +136,8 @@ public form = [
 
     await alert.present();
   }
+
+  
 }
   
   

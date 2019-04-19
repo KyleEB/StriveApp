@@ -34,3 +34,11 @@ describe('The preload function', function() {
     expect(service.play('oceanSounds')).toBeTruthy();
   })
 })
+
+
+describe('The play function', function() {
+  it('should not take null songs', ()=> {
+    let service: AudioService = TestBed.get(AudioService);
+    expect(service.play(" ")).not.toBeTruthy();
+  })
+})

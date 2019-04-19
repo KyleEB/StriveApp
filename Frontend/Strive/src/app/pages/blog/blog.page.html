@@ -9,15 +9,9 @@
 
 <ion-content>
 	<ion-button (click)="presentAlert()">?</ion-button>
-	<ion-list>
-		<ion-title> My Notes</ion-title>
-		<ion-card>
-			<ion-title >Recent Notes<br> example note</ion-title>
-		</ion-card>
-		
-		<ion-title>Friend's Notes</ion-title>
-		<ion-card>
-			<ion-title >Top Friend's Notes <br> example note</ion-title>
-		</ion-card>
-	</ion-list>
+	<ion-button float-right (click)="blogPost()">New Post</ion-button>
+	<ion-card *ngFor='let post of feed'>
+		<ion-card-content>{{fullname}}</ion-card-content>
+		<ion-card-content>{{post}}</ion-card-content>
+	</ion-card>
 </ion-content>
