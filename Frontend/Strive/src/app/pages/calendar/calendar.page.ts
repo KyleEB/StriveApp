@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../theme.service'
-import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-calendar',
@@ -13,11 +11,11 @@ export class CalendarPage implements OnInit {
   event: any;
   time: any;
   location: any;
-public cards = [{"name": "New Event", "task": "false", "checklist": "true"}];
+public cards = [{"name": "New Event", "task": "false", "checklist": "false"}];
 public form = [
-      { val: 'Task 1', isChecked: false },
-      { val: 'Task 2', isChecked: false },
-      { val: 'Task 3', isChecked: false }
+      { val: 'Task1', isChecked: false },
+      { val: 'Task2', isChecked: false },
+      { val: 'Task3', isChecked: false }
     ];
 
   constructor(
@@ -29,12 +27,15 @@ public form = [
   async add() {
     let alert = await this.alertCtrl.create({
       header: 'Add Checklist?',
+      cssClass: 'custom',
       buttons: [
         {
           text: "Yes",
           handler: () => {
+            this.customizeForm();
             this.cards[0].task = "true";
             this.cards[0].checklist = "true";
+            console.log(this.form);
           }
         },
         {
@@ -87,7 +88,41 @@ public form = [
     });
     return await alert.present();
   }
-
+async customizeForm(){
+    let alert = await this.alertCtrl.create({
+      cssClass:'custom',
+      inputs: [
+        {
+          type: 'text',
+          name: 'task1',
+          placeholder: 'New Task'
+        },
+        {
+          type: 'text',
+          name: 'task2',
+          placeholder: 'New Task'
+        },
+        {
+          type: 'text',
+          name: 'task3',
+          placeholder: 'New Task'
+        }
+      ],
+      buttons: [
+        {
+          text: 'next',
+          handler: data => {
+            this.form[0].val = data.task1;
+            this.form[2].val = data.task2;
+            this.form[3].val = data.task3;
+            console.log(this.form);
+            this.cards[0].checklist = "true";
+          }
+        }
+      ]
+    });
+    return await alert.present();
+  }
   ngOnInit() {
   }
 
@@ -100,6 +135,8 @@ public form = [
 
     await alert.present();
   }
+
+  
 }
   
   
