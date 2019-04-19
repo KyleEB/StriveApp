@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/theme.service';
 import { NavController, AlertController } from '@ionic/angular';
-import { timeout } from 'q';
 import { Storage } from '@ionic/storage';
+import { feed } from 'src/app/pages/blog/feed';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.page.html',
   styleUrls: ['./blog.page.scss'],
 })
+
 export class BlogPage implements OnInit {
 
 	public fullname:string;
@@ -20,19 +21,9 @@ export class BlogPage implements OnInit {
 		private theme: ThemeService,
 		private alertCtrl: AlertController,
 		public nav: NavController,
-		public storage: Storage
-		
+		public storage: Storage,
 	) {
 		this.theme.storedTheme;
-		
-		static feed = class {
-			post: string;
-			timestamp: any;
-			counstructor(post:string,time:any){
-				this.post = post;
-				this.timestamp = time;
-			}
-		}
 	}
 	
 	ngOnInit() {
@@ -64,7 +55,7 @@ export class BlogPage implements OnInit {
 							console.log(JSON.stringify(data));
 							console.log(data.Post);
 							this.time = Date.now();
-							this.currentfeed = new feed(data.Post, this.time)
+							this.currentfeed = new feed(data.Post,this.time);
 							this.myfeed.push(this.currentfeed);
 						}
 					}
