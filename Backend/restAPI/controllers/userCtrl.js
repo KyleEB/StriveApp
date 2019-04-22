@@ -1,6 +1,18 @@
+/**
+ * Instantiates passport for HTTP Posts
+ */
 const passport = require('passport');
+/**
+ * Creates User Obj using REST route
+ */
 const User = require('../models/user');
 
+/**
+ * Exports a create user method using post and response requests
+ * @param req Request
+ * @param res Response
+ * @param next Passback to Frontend
+ */
 exports.createUser = (req, res, next) => {
     passport.authenticate('local-signup', (err, user, info) => {
         if(err){
@@ -15,7 +27,12 @@ exports.createUser = (req, res, next) => {
 
     })(req, res, next);
 }
-
+/**
+ * Exports login function to Frontend 
+ * @param req Request
+ * @param res Response
+ * @param next Passback to Frontend
+ */
 exports.loginUser = (req, res, next) => {
     
     passport.authenticate('local-login', (err, user, info) => {
@@ -31,7 +48,12 @@ exports.loginUser = (req, res, next) => {
 
     })(req, res, next);
 }
-
+/**
+ * Exports changing password function to Frontend 
+ * @param req Request
+ * @param res Response
+ * @param next Passback to Frontend
+ */
 exports.changePassword = (req, res, next) =>{
     passport.authenticate('local-password', (err, user, info) => {
         if(err){
@@ -46,7 +68,12 @@ exports.changePassword = (req, res, next) =>{
 
     })(req, res, next);
 }
-
+/**
+ * Exports updating cards/goals function to Frontend 
+ * @param req Request
+ * @param res Response
+ * @param next Passback to Frontend
+ */
 exports.updateCards = (req, res, next) =>{
     passport.authenticate('local-cards', (err, user, info) => {
         if(err){

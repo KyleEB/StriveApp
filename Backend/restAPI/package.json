@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": "Kyle Bowden",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

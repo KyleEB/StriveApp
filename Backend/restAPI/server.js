@@ -40,7 +40,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+/**
+ * Creates User route from REST routes
+ */
 const user = require('./routes/userRoute');
 
 app.use('/api', user);
@@ -53,6 +55,9 @@ app.listen(3000, () => {
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
  
+/**
+ * Creates methods for when a connection is established via socket.io
+ */
 io.on('connection', (socket) => {
   
   socket.on('disconnect', function(){

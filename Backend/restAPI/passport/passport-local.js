@@ -1,8 +1,20 @@
+/**
+ * Creates User obj from REST route
+ */
 const User = require('../models/user');
+/**
+ * Creates passport obj from dependencies
+ */
 const passport = require('passport');
+/**
+ * Creates passport strategy for create user, login, and update cards
+ */
 const LocalStrategy = require('passport-local').Strategy;
 
-//REGISTRATION
+/**
+ * Uses passport to create signup method to create a user on DB
+ * @returns A newly created User Obj
+ */
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -34,7 +46,10 @@ passport.use('local-signup', new LocalStrategy({
     });
 }));
 
-//LOGIN
+/**
+ * Uses passport to login to the server from the Frontend
+ * @returns A User Obj from the DB
+ */
 passport.use('local-login', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -62,7 +77,10 @@ passport.use('local-login', new LocalStrategy({
     });
 }));
 
-//changepassword
+/**
+ * Uses passport to change the password of the current user
+ * @returns If the change was successful
+ */
 passport.use('local-password', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -85,7 +103,9 @@ passport.use('local-password', new LocalStrategy({
         
     });
 }));
-
+/**
+ * Uses passport to update the goals/cards of a User from the Frontend to the Server
+ */
 passport.use('local-cards', new LocalStrategy({
     usernameField: 'username',
     cardArray: 'cards',

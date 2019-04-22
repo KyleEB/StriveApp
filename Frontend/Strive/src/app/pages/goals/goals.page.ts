@@ -51,6 +51,7 @@ export class GoalsPage {
 
   username: any;
   password: any;
+  user: any;
 
   constructor(
     private theme: ThemeService,
@@ -164,28 +165,28 @@ export class GoalsPage {
 
   }
 
-  cardUpdate(){
+  async cardUpdate(){
+    await this.storage.set('cards', this.cards);
     this.register.updateCards(this.username, this.password, this.cards).subscribe(async res => {
       console.log(res)
 
       if (res.error) {
         this.displayAlert('Card Update Error', res.error);
       }
-
-      if (res.user) {
-        this.storage.set('cards', this.cards);
-      }
+      this.user.cards = this.cards;
+       await this.storage.set('user', this.user);
+        
     });
   }
 
-
-
-  async loadUser() {
-    await this.storage.get('user').then((user) => {
+   loadUser() {
+      this.storage.get('user').then((user) => {
       console.log('your name is ' + user.fullname);
       console.log('your username is ' + user.username);
       this.username = user.username;
       this.password = user.password;
+      this.user = user;
+      this.cards = user.cards;
     });
   }
 
@@ -212,17 +213,12 @@ export class GoalsPage {
     await alert.present();
   }
 
-  async loadCards(){
-    await this.storage.get('cards').then((cards) => {
-      if(cards != null){
-      this.cards = cards;
-      }
-    });
-  }
-
   ionViewWillEnter(){
     this.loadUser();
-    this.loadCards();
+  }
+
+  ionViewWillLeave(){
+    this.cardUpdate();
   }
 
   bottleCheck(card, bottle){
