@@ -57,5 +57,4 @@ export class MainPage {
       this.loadUser();
       this.loadCards();
     }
-
 }

@@ -1,15 +1,23 @@
-.square {
-    width:300px;
-    height:300px;
-    background-size:  100% 100%;;
-    text-align: center;
-  }
-
-.centerCard{
-  padding-top: 25%;
-  text-align: center;
-}
-
 .center {
     text-align: center;
   }
+
+.custTitle{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, cursive;
+}
+
+.square {
+  width:150px;
+  height:150px;
+  background-size:  100% 100%;
+  background-color: cornsilk !important;
+  padding: 0px;
+}
+
+.goal{
+  padding-top: 45%;
+}
+
+.cardCenter{
+  justify-content: center;
+}

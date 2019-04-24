@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-title padding center text-center color='dark'>Achievements</ion-title>
-  <ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-title padding center text-center class="custTitle">Achievements</ion-title>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -10,25 +10,26 @@
 <ion-content>
   <ion-button (click)="presentAlert()">?</ion-button><br>
   <h3 text-center>Your Personal Achievements:</h3>
+
   <ion-grid>
-    <ion-row justify-content-center align-items-center>
-      <ion-card *ngFor="let card of cards">
-        <div *ngIf='card.achieved === "true"' >
-          <div class="square" text-center>
-              <ion-button  float-right (click)="deleteAch(card)">
-                <ion-icon name="trash"></ion-icon>
-              </ion-button>
-            <div class="center">
-              <ion-card-title> {{card.name}} </ion-card-title>
-              <ion-fab horizontal="center" vertical="center">
-                  <ion-fab-button disabled="true">
-                    <ion-icon name="trophy"></ion-icon>
-                  </ion-fab-button>
-                </ion-fab>
-            </div>
+    <ion-row justify-content-center>
+      <div *ngFor="let card of cards">
+      <ion-card *ngIf='card.achieved === "true"'>
+        <div class="square" text-center>
+          <ion-button  float-right (click)="deleteAch(card)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <div class="center">
+            <ion-card-title> {{card.name}} </ion-card-title>
+            <ion-fab horizontal="center" vertical="center">
+              <ion-fab-button disabled="true">
+                <ion-icon name="trophy"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
           </div>
         </div>
       </ion-card>
+      </div>
     </ion-row>
   </ion-grid>
 </ion-content>

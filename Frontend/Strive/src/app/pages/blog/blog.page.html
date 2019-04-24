@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-title padding center text-center color='dark'>Blog</ion-title>
-  <ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-title padding center text-center class="custTitle">Blog</ion-title>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -11,7 +11,7 @@
 	<ion-button (click)="presentAlert()">?</ion-button>
 	<ion-button float-right (click)="blogPost()">New Post</ion-button>
   <ion-header text-center>My Feed</ion-header>
-  <ion-card *ngFor='let feed of myfeed'>
+  <ion-card *ngFor='let feed of myfeed' background-color="secondary">
     <ion-card-content>{{fullname}}</ion-card-content>
 		<ion-card-content>{{feed.post}}</ion-card-content>
 	</ion-card>

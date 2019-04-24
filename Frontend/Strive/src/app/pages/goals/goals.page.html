@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-title padding center text-center color='dark'>Goals</ion-title>
-  <ion-toolbar>
+  <ion-toolbar color="medium">
+      <ion-title padding center text-center class="custTitle">Goals</ion-title>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -17,48 +17,47 @@
   </div>
 
   <ion-grid style="height: 100%">
-    <ion-row justify-content-center align-items-center>
-      <ion-card *ngFor="let card of cards">
-        <div *ngIf='card.goal === "true"' >
-          <div class="square" text-center>
-              <ion-button  float-right (click)="deleteCard(card)">
-                <ion-icon name="trash"></ion-icon>
-              </ion-button>
-            <div class="center">
-              <ion-card-title> {{card.name}} </ion-card-title>
-              <ion-card-content>{{card.desc}}</ion-card-content>
+    <ion-row justify-content-center>
+      <div *ngFor="let card of cards">
+       <ion-card *ngIf='card.goal === "true"' >
+        <div class="square" text-center>
+          <ion-button  float-right (click)="deleteCard(card)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <div class="center">
+            <ion-card-title> {{card.name}} </ion-card-title>
+            <ion-card-content>{{card.desc}}</ion-card-content>
 
-              <ion-row *ngIf='card.name === "3 Bottles a Day"'>
-                <ion-checkbox *ngFor="let bottle of bottles" (click)="bottleCheck(card,bottle)"></ion-checkbox>
-              </ion-row>
+            <ion-row *ngIf='card.name === "3 Bottles a Day"'>
+              <ion-checkbox *ngFor="let bottle of bottles" (click)="bottleCheck(card,bottle)"></ion-checkbox>
+            </ion-row>
 
-              <ion-row *ngIf='card.name === "Go to the Gym More"'>
-                <ion-checkbox *ngFor="let day of gymDays" (click)="dayCheck(card,day)"></ion-checkbox>
-              </ion-row>
+            <ion-row *ngIf='card.name === "Go to the Gym More"'>
+              <ion-checkbox *ngFor="let day of gymDays" (click)="dayCheck(card,day)"></ion-checkbox>
+            </ion-row>
 
-              <ion-row *ngIf='card.name === "Jog More Often"'>
-                <ion-checkbox *ngFor="let day of jogDays" (click)="dayCheck(card,day)"></ion-checkbox>
-              </ion-row>
+            <ion-row *ngIf='card.name === "Jog More Often"'>
+              <ion-checkbox *ngFor="let day of jogDays" (click)="dayCheck(card,day)"></ion-checkbox>
+            </ion-row>
 
-              <ion-row *ngIf='card.name ===  "Drink Every Hour"'>
-                <ion-button float-right (click)="congratulate(card)">yes</ion-button>
-                <ion-button float-left>no</ion-button>
-              </ion-row>
+            <ion-row *ngIf='card.name ===  "Drink Every Hour"'>
+              <ion-button float-right (click)="congratulate(card)">yes</ion-button>
+              <ion-button float-left>no</ion-button>
+            </ion-row>
 
-              <ion-row *ngIf='card.name ===  "Eat Healthier"'>
-                <ion-button float-right (click)="congratulate(card)">yes</ion-button>
-                <ion-button float-left>no</ion-button>
-              </ion-row>
+            <ion-row *ngIf='card.name ===  "Eat Healthier"'>
+              <ion-button float-right (click)="congratulate(card)">yes</ion-button>
+              <ion-button float-left>no</ion-button>
+            </ion-row>
 
-              <ion-row *ngIf='card.name ===  "Eat Less"'>
-                  <ion-button float-right (click)="congratulate(card)">yes</ion-button>
-                  <ion-button float-left>no</ion-button>
-                </ion-row>
-
-            </div>
+            <ion-row *ngIf='card.name ===  "Eat Less"'>
+              <ion-button float-right (click)="congratulate(card)">yes</ion-button>
+              <ion-button float-left>no</ion-button>
+            </ion-row>
           </div>
         </div>
       </ion-card>
+    </div>
    </ion-row>
   </ion-grid>>
 

@@ -3,7 +3,7 @@ import { ThemeService } from 'src/app/theme.service';
 import { AlertController } from '@ionic/angular';
 import { SelectorMatcher } from '@angular/compiler';
 import { RegisterService } from '../../services/register.service';
-import { registerContentQuery } from '@angular/core/src/render3';
+import { registerContentQuery, text } from '@angular/core/src/render3';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -134,10 +134,10 @@ export class GoalsPage {
   }
 
   async popup() {
-
+    this.theme.setVariable("--ion-text-color","black");
     let alert = await this.alertCtrl.create({
       header: 'Choose Goals!',
-      cssClass: 'custom',
+      cssClass: 'customAlert',
       buttons: [
         {
           text: "Drink More Water",
