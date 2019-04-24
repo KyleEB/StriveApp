@@ -10,6 +10,8 @@ stages:
 build-test:
   stage: build-test
   script:
+    - cd Frontend
+    - cd Strive
     - npm install
     - npm run build
     - npm run test
