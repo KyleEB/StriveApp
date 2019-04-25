@@ -12,6 +12,7 @@ build-test:
   script:
     - cd Frontend
     - cd Strive
+    - npm install ionic
     - npm install
     - npm run build
     - npm run e2e
