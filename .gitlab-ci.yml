@@ -1,18 +1,25 @@
 # https://gitlab.com/ci/lint
 # This image is based from node and includes what we need to run tests with Chrome headless
-# image: weboaks/node-karma-protractor-chrome
+image: weboaks/node-karma-protractor-chrome
 
 variables:
 
-stages:
-  - build-test
 
-build-test:
-  stage: build-test
-  script:
+Frontend-test:
+    tags:
+    - ionic
+    script:
     - cd Frontend
     - cd Strive
+    - npm install ionic
     - npm install
     - npm run build
-    - npm run test
-    - npm run e2e
+    
+Backend-test:
+    tags:
+    - node
+    script:
+    - cd Backend
+    - cd restAPI
+    - npm install 
+    - npm test
