@@ -9,6 +9,8 @@ stages:
 
 build-test:
   stage: build-test
+  tags:
+  - ionic_tag
   script:
     - cd Frontend
     - cd Strive
