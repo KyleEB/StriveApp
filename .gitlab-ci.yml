@@ -1,6 +1,6 @@
 # https://gitlab.com/ci/lint
 # This image is based from node and includes what we need to run tests with Chrome headless
-image: weboaks/node-karma-protractor-chrome
+# image: weboaks/node-karma-protractor-chrome
 
 variables:
 
