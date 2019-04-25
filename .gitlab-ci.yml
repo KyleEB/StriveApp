@@ -5,7 +5,7 @@ image: weboaks/node-karma-protractor-chrome
 variables:
 
 
-build-test:
+Frontend-test:
     tags:
     - ionic
     script:
@@ -15,7 +15,7 @@ build-test:
     - npm install
     - npm run build
     
-node-test:
+Backend-test:
     tags:
     - node
     script:
