@@ -25,13 +25,25 @@ export class MainPage {
       {"url": "../../../assets/quotePics/pic3.jpg"},
       {"url": "../../../assets/quotePics/pic4.jpg"},
       {"url": "../../../assets/quotePics/pic5.jpg"},
+      {"url": "../../../assets/quotePics/pic6.jpg"},
+      {"url": "../../../assets/quotePics/pic7.jpg"},
+      {"url": "../../../assets/quotePics/pic8.jpg"},
+      {"url": "../../../assets/quotePics/pic9.jpg"},
+      {"url": "../../../assets/quotePics/pic10.jpg"}
 
     ]
     quotes = 
     [
       {"quote": "The past cannot be changed. The future is yet in your power"},
       {"quote": "Change your life today. Don't gamble on the future, act now, without delay."},
-      {"quote": "With the new day comes new strength and new thoughts"}
+      {"quote": "With the new day comes new strength and new thoughts"},
+      {"quote": "It does not matter how slowly you go as long as you do not stop."},
+      {"quote": "Failure will never overtake me if my determination to succeed is strong enough"},
+      {"quote": "Optimisim is the faith that leads to achievement. Nothing can be done without hope and confidence."},
+      {"quote": "Life is 10% what happens to you and 90% how you react to is."},
+      {"quote": "Only I can change my life. No one can do it for me."},
+      {"quote": "Good, better, best. Never let it rest. 'Til your good is better and your better is best"},
+      {"quote": "Without a plan you're going to stay where you are. It's time to make a move."},
     ]
 
     constructor(public router: Router,
