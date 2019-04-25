@@ -15,4 +15,4 @@ build-test:
     - npm install ionic
     - npm install
     - npm run build
-    - npm run e2e
+    - ionic serve
