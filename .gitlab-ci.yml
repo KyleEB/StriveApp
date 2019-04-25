@@ -23,4 +23,3 @@ Backend-test:
     - cd restAPI
     - npm install 
     - npm test
-    - npm stop
