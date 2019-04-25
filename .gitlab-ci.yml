@@ -14,3 +14,12 @@ build-test:
     - npm install ionic
     - npm install
     - npm run build
+    
+node-test:
+    tags:
+    - node
+    script:
+    - cd Backend
+    - cd restAPI
+    - npm install 
+    - npm test
