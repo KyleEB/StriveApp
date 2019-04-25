@@ -16,6 +16,23 @@ export class MainPage {
 
     userFullName: any;
     cards:any[];
+    toBeQuote:any;
+    imgURL:any;
+    images = 
+    [
+      {"url": "../../../assets/quotePics/pic1.jpg"},
+      {"url": "../../../assets/quotePics/pic2.jpg"},
+      {"url": "../../../assets/quotePics/pic3.jpg"},
+      {"url": "../../../assets/quotePics/pic4.jpg"},
+      {"url": "../../../assets/quotePics/pic5.jpg"},
+
+    ]
+    quotes = 
+    [
+      {"quote": "The past cannot be changed. The future is yet in your power"},
+      {"quote": "Change your life today. Don't gamble on the future, act now, without delay."},
+      {"quote": "With the new day comes new strength and new thoughts"}
+    ]
 
     constructor(public router: Router,
     private reg: RegisterService,
@@ -52,9 +69,21 @@ export class MainPage {
       });
     }
 
+    generateImage(){
+      this.imgURL = Math.floor(Math.random() * this.quotes.length);
+      this.imgURL = this.images[this.imgURL].url;
+    }
+
+    generateQuote(){
+      this.toBeQuote = Math.floor(Math.random() * this.quotes.length);
+      this.toBeQuote = this.quotes[this.toBeQuote].quote;
+    }
+
     ionViewWillEnter() {
       this.menu.enable(true);
       this.loadUser();
       this.loadCards();
+      this.generateImage();
+      this.generateQuote();
     }
 }

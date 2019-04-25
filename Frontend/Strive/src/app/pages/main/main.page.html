@@ -11,6 +11,13 @@
   <h1>Welcome to Strive, {{userFullName}}!</h1>
   <button ion-button full (click)="joinChat()" >Join Chat-Room as {{ userFullName }}</button>
 
+  <ion-card class = "myCard">
+      <ion-img [src]=imgURL></ion-img> 
+      <div class="myOverlay">
+        {{toBeQuote}}
+      </div>
+    </ion-card>
+
   <ion-grid style="height: 100%" width="100%">
     <h3 class=center>Current Goals:</h3>
     <ion-row class="cardCenter">
@@ -23,15 +30,4 @@
     </div>
     </ion-row>
   </ion-grid>
-
-  <!-- <ion-grid>
-    <h3 class=center>Current Goals:</h3>
-    <ion-row justify-content-center align-items-center>
-      <ion-item *ngFor="let card of cards" lines="none">
-        <div *ngIf='card.goal === "true"' >
-          <ion-card>{{card.name}}</ion-card>
-        </div>
-      </ion-item>
-    </ion-row>
-  </ion-grid> -->
 </ion-content>
