@@ -4,14 +4,11 @@ image: weboaks/node-karma-protractor-chrome
 
 variables:
 
-stages:
-  - build-test
 
 build-test:
-  stage: build-test
-  tags:
-  - ionic_tag
-  script:
+    tags:
+    - ionic_tag
+    script:
     - cd Frontend
     - cd Strive
     - npm install ionic
