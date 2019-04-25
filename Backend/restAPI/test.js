@@ -38,4 +38,5 @@ describe('Backend Testing Mocha', () => {
         });
 
     });
+    server.close();
 });
