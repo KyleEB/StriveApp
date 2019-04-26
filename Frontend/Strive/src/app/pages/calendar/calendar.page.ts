@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../theme.service'
 import { AlertController } from '@ionic/angular';
+import { task } from './task';
 
 @Component({
   selector: 'app-calendar',
@@ -11,47 +12,24 @@ export class CalendarPage implements OnInit {
   event: any;
   time: any;
   location: any;
-public cards = [{"name": "New Event", "task": "false", "checklist": "false"}];
-public form = [
-      { val: 'Task1', isChecked: false },
-      { val: 'Task2', isChecked: false },
-      { val: 'Task3', isChecked: false }
-    ];
+  task: any;
+
+  public todo = [];
+
+  public cards = [{ "name": "New Event", "task": "false", "checklist": "false" }];
+  public form = [
+    { val: 'Task1', isChecked: false },
+    { val: 'Task2', isChecked: false },
+    { val: 'Task3', isChecked: false }
+  ];
 
   constructor(
     private theme: ThemeService,
-    private alertCtrl: AlertController    ) {
+    private alertCtrl: AlertController) {
     this.theme.storedTheme;
-   }
-
-  async add() {
-    let alert = await this.alertCtrl.create({
-      header: 'Add Checklist?',
-      cssClass: 'custom',
-      buttons: [
-        {
-          text: "Yes",
-          handler: () => {
-            this.customizeForm();
-            this.cards[0].task = "true";
-            this.cards[0].checklist = "true";
-            console.log(this.form);
-          }
-        },
-        {
-          text: "No",
-          handler: () => {
-            this.cards[0].task = "true";
-            this.cards[0].checklist = "false";
-          }
-        }
-      ]
-    });
-    return await alert.present();
   }
 
-
-  async popup(){
+  async popup() {
     let alert = await this.alertCtrl.create({
       header: 'New Event',
       cssClass: 'custom',
@@ -71,26 +49,49 @@ public form = [
           name: 'location',
           placeholder: 'Location'
         }
-      ],buttons: [
-	    {
+      ], buttons: [
+        {
           text: "save",
           handler: data => {
-            if(typeof event != null){
-              this.event = data.event;
-              this.time =data.time;
-              this.location = data.location;
-            }
-            console.log(data);
             this.add();
-			    }
-      }
+            console.log(JSON.stringify(data));
+            this.task = new task(data.event, data.time, data.location);
+            this.todo.push(this.task);
+          }
+        }
       ]
     });
     return await alert.present();
   }
-async customizeForm(){
+
+  async add() {
     let alert = await this.alertCtrl.create({
-      cssClass:'custom',
+      header: 'Add Checklist?',
+      cssClass: 'custom',
+      buttons: [
+        {
+          text: "Yes",
+          handler: () => {
+            this.customizeForm();
+            this.cards[0].task = "true";
+            this.cards[0].checklist = "true";
+          }
+        },
+        {
+          text: "No",
+          handler: () => {
+            this.cards[0].task = "true";
+            this.cards[0].checklist = "false";
+          }
+        }
+      ]
+    });
+    return await alert.present();
+  }
+
+  async customizeForm() {
+    let alert = await this.alertCtrl.create({
+      cssClass: 'custom',
       inputs: [
         {
           type: 'text',
@@ -112,8 +113,8 @@ async customizeForm(){
         {
           text: 'next',
           handler: data => {
-          if(this.form)
-            this.form[0].val = data.task1;
+            if (this.form)
+              this.form[0].val = data.task1;
             this.form[1].val = data.task2;
             this.form[2].val = data.task3;
             console.log(this.form);
@@ -136,11 +137,4 @@ async customizeForm(){
 
     await alert.present();
   }
-
-  
 }
-  
-  
-  
-
-
