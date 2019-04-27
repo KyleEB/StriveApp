@@ -23,11 +23,13 @@
                   <ion-card-content>{{task.eventName}}</ion-card-content>
                   <ion-card-content>{{task.timeEvent}}</ion-card-content>
                   <ion-card-content>{{task.loc}}</ion-card-content>
-                  <ion-row *ngIf='card.checklist === "true"'>  
-                    <ion-item *ngFor="let entry of form">
-                      <ion-label>{{entry.val}}</ion-label>
-                      <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
-                    </ion-item>
+                  <ion-row *ngIf='card.checklist === "true"'>
+                      <ion-label>{{task.t1}}</ion-label>
+                      <ion-checkbox checked="false"></ion-checkbox>
+                      <ion-label>{{task.t2}}</ion-label>
+                      <ion-checkbox checked="false"></ion-checkbox>
+                      <ion-label>{{task.t3}}</ion-label>
+                      <ion-checkbox checked="false"></ion-checkbox>
                   </ion-row>
                 </ion-card-content>
               </ion-card>

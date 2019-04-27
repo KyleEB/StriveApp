@@ -13,15 +13,14 @@ export class CalendarPage implements OnInit {
   time: any;
   location: any;
   task: any;
+  part1: any;
+  part2: any;
+  part3: any;
 
   public todo = [];
 
   public cards = [{ "name": "New Event", "task": "false", "checklist": "false" }];
-  public form = [
-    { val: 'Task1', isChecked: false },
-    { val: 'Task2', isChecked: false },
-    { val: 'Task3', isChecked: false }
-  ];
+  
 
   constructor(
     private theme: ThemeService,
@@ -53,9 +52,9 @@ export class CalendarPage implements OnInit {
           text: "save",
           handler: data => {
             this.add();
-            console.log(JSON.stringify(data));
-            this.task = new task(data.event, data.time, data.location, this.cards[0].checklist);
-            this.todo.push(this.task);
+            this.event = data.event;
+            this.time = data.time;
+            this.location = data.location;
           }
         }
       ]
@@ -77,9 +76,12 @@ export class CalendarPage implements OnInit {
         },
         {
           text: "No",
-          handler: () => {
+          handler: data => {
             this.cards[0].task = "true";
             this.cards[0].checklist = "false";
+            console.log(JSON.stringify(data));
+            this.task = new task(this.event, this.time, this.location, this.cards[0].checklist, this.part1, this.part2, this.part3);
+            this.todo.push(this.task);
           }
         }
       ]
@@ -111,9 +113,12 @@ export class CalendarPage implements OnInit {
         {
           text: 'next',
           handler: data => {
-            this.form[0].val = data.task1;
-            this.form[1].val = data.task2;
-            this.form[2].val = data.task3;
+            this.part1 = data.task1;
+            this.part2 = data.task2;
+            this.part3 = data.task3;
+            console.log(JSON.stringify(data));
+            this.task = new task(this.event, this.time, this.location, this.cards[0].checklist, this.part1, this.part2, this.part3);
+            this.todo.push(this.task);
           }
         }
       ]
