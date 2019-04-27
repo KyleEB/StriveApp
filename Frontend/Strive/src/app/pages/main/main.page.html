@@ -9,25 +9,35 @@
 
 <ion-content text-center>
   <h1>Welcome to Strive, {{userFullName}}!</h1>
-  <button ion-button full (click)="joinChat()" >Join Chat-Room as {{ userFullName }}</button>
-
-  <ion-card class = "myCard">
-    <ion-img [src]=imgURL></ion-img> 
-    <div class="myOverlay">
-      {{toBeQuote}}
-    </div>
-  </ion-card>
 
   <ion-grid style="height: 100%" width="100%">
-    <h3 class=center>Current Goals:</h3>
     <ion-row class="cardCenter">
+      <ion-item class = "myCard">
+        <ion-img [src]=imgURL></ion-img> 
+        <div class="myOverlay">
+          {{toBeQuote}}
+        </div>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+  <ion-button expand="full" (click)="joinChat()" >Join Chat-Room as {{ userFullName }}</ion-button>
+  <ion-grid style="height: 100%" width="100%">
+    <ion-card>
+    <h2 class="cardCenterWhite">Current Goals:</h2>
+    <ion-row class="cardCenterWhite">
       <div *ngFor="let card of cards">
       <ion-card *ngIf='card.goal === "true"' >
           <div class="square" text-center>
-            <div class="goal">{{card.name}}</div>
+            <div class="goal" class="padTop">{{card.name}}</div>
           </div>
       </ion-card>
     </div>
+    </ion-row>
+    </ion-card>
+    <ion-row class="center">
+      <ion-button (click)="navigateGoals()">Make new Goals!</ion-button>
+      <ion-button (click)="navigateAchievements()">View Your Achievements</ion-button>
+      <ion-button (click)="navigateProfile()">Update Profile</ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -1,5 +1,6 @@
 .center {
     text-align: center;
+    justify-content: center;
   }
 
 .custTitle{
@@ -18,19 +19,33 @@
   justify-content: center;
 }
 
+.cardCenterWhite{
+  justify-content: center;
+  background-color: white;
+}
+
 .myCard{
   position:relative;
+  width: 75%;
+  height: 200px;
+  padding-bottom: 0px;
 
 }
 
 .myOverlay{
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-align: center;
     width: 100%;
     height: 75%;
-    font-size: 6vw;
+    font-size: 3.5vw;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-shadow: 2px 2px 2px #000;
     position: absolute;
     bottom: 0px;
     color: white;
+}
 
+.padTop {
+  padding-top: 40%;
 }
