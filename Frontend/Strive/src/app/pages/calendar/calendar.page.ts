@@ -113,12 +113,9 @@ export class CalendarPage implements OnInit {
         {
           text: 'next',
           handler: data => {
-            if (this.form)
-              this.form[0].val = data.task1;
+            this.form[0].val = data.task1;
             this.form[1].val = data.task2;
             this.form[2].val = data.task3;
-            console.log(this.form);
-            this.cards[0].checklist = "true";
           }
         }
       ]
