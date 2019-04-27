@@ -10,11 +10,7 @@
 <ion-content padding>
   <ion-button (click)="presentAlert()">?</ion-button>
 
-  <div text-center>
-    <ion-button (click)="popup()">
-      Add Event
-    </ion-button>
-  </div>
+  <ion-button style="float: right" (click)="popup()">Add Event</ion-button>
 
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center>
@@ -24,19 +20,14 @@
             <div class="center">
               <div *ngFor="let task of todo">
                 <ion-card-content>
-                  <ion-row *ngIf='card.checklist === "true"'>
-                    <ion-card-content>{{task.eventName}}</ion-card-content>
-                    <ion-card-content>{{task.timeEvent}}</ion-card-content>
-                    <ion-card-content>{{task.loc}}</ion-card-content>
+                  <ion-card-content>{{task.eventName}}</ion-card-content>
+                  <ion-card-content>{{task.timeEvent}}</ion-card-content>
+                  <ion-card-content>{{task.loc}}</ion-card-content>
+                  <ion-row *ngIf='card.checklist === "true"'>  
                     <ion-item *ngFor="let entry of form">
                       <ion-label>{{entry.val}}</ion-label>
                       <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
                     </ion-item>
-                  </ion-row>
-                  <ion-row *ngIf='card.checklist === "false"'>
-                    <ion-card-content>{{task.eventName}}</ion-card-content>
-                    <ion-card-content>{{task.timeEvent}}</ion-card-content>
-                    <ion-card-content>{{task.loc}}</ion-card-content>
                   </ion-row>
                 </ion-card-content>
               </div>
