@@ -25,10 +25,6 @@ export class MenuPage implements OnInit {
         url: '/menu/(menucontent:blog)'
       },
       {
-        title: 'Journal Page',
-        url: '/menu/(menucontent:journal)'
-      },
-      {
         title: 'Meditation Page',
         url: '/menu/(menucontent:meditation)'
       },
