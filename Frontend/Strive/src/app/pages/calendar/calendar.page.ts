@@ -32,7 +32,6 @@ export class CalendarPage implements OnInit {
   async popup() {
     let alert = await this.alertCtrl.create({
       header: 'New Event',
-      cssClass: 'custom',
       inputs: [
         {
           type: 'text',
@@ -55,7 +54,7 @@ export class CalendarPage implements OnInit {
           handler: data => {
             this.add();
             console.log(JSON.stringify(data));
-            this.task = new task(data.event, data.time, data.location);
+            this.task = new task(data.event, data.time, data.location, this.cards[0].checklist);
             this.todo.push(this.task);
           }
         }
@@ -67,7 +66,6 @@ export class CalendarPage implements OnInit {
   async add() {
     let alert = await this.alertCtrl.create({
       header: 'Add Checklist?',
-      cssClass: 'custom',
       buttons: [
         {
           text: "Yes",

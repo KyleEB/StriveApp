@@ -14,11 +14,11 @@
 
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center>
-      <ion-card *ngFor="let card of cards">
+      <div *ngFor="let card of cards">
         <div *ngIf='card.task === "true"'>
           <div class="square" text-center>
             <div class="center">
-              <div *ngFor="let task of todo">
+              <ion-card *ngFor="let task of todo">
                 <ion-card-content>
                   <ion-card-content>{{task.eventName}}</ion-card-content>
                   <ion-card-content>{{task.timeEvent}}</ion-card-content>
@@ -30,11 +30,11 @@
                     </ion-item>
                   </ion-row>
                 </ion-card-content>
-              </div>
+              </ion-card>
             </div>
           </div>
         </div>
-      </ion-card>
+      </div>
     </ion-row>
   </ion-grid>
 </ion-content>
