@@ -18,13 +18,13 @@
 
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center>
-      <ion-card *ngFor="let card of cards">
+      <div *ngFor="let card of cards">
         <div *ngIf='card.task === "true"'>
           <div class="square" text-center>
             <div class="center">
-              <div *ngFor="let task of todo">
+              <ion-card *ngFor="let task of todo">
                 <ion-card-content>
-                  <ion-row *ngIf='card.checklist === "true"'>
+                  <ion-row *ngIf='task.checklist === "true"'>
                     <ion-card-content>{{task.eventName}}</ion-card-content>
                     <ion-card-content>{{task.timeEvent}}</ion-card-content>
                     <ion-card-content>{{task.loc}}</ion-card-content>
@@ -33,17 +33,17 @@
                       <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
                     </ion-item>
                   </ion-row>
-                  <ion-row *ngIf='card.checklist === "false"'>
+                  <ion-row *ngIf='task.checklist === "false"'>
                     <ion-card-content>{{task.eventName}}</ion-card-content>
                     <ion-card-content>{{task.timeEvent}}</ion-card-content>
                     <ion-card-content>{{task.loc}}</ion-card-content>
                   </ion-row>
                 </ion-card-content>
-              </div>
+              </ion-card>
             </div>
           </div>
         </div>
-      </ion-card>
+      </div>
     </ion-row>
   </ion-grid>
 </ion-content>
