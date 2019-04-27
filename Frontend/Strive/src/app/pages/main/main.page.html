@@ -10,18 +10,8 @@
 <ion-content text-center>
   <h1>Welcome to Strive, {{userFullName}}!</h1>
 
-  <ion-grid style="height: 100%" width="100%">
-    <ion-row class="cardCenter">
-      <ion-item class = "myCard">
-        <ion-img [src]=imgURL></ion-img> 
-        <div class="myOverlay">
-          {{toBeQuote}}
-        </div>
-      </ion-item>
-    </ion-row>
-  </ion-grid>
   <ion-button expand="full" (click)="joinChat()" >Join Chat-Room as {{ userFullName }}</ion-button>
-  <ion-grid style="height: 100%" width="100%">
+  <ion-grid style="height: 50%%" width="100%">
     <ion-card>
     <h2 class="cardCenterWhite">Current Goals:</h2>
     <ion-row class="cardCenterWhite">
@@ -40,4 +30,15 @@
       <ion-button (click)="navigateProfile()">Update Profile</ion-button>
     </ion-row>
   </ion-grid>
+
+  <ion-grid style="height: 100%" width="100%">
+      <ion-row class="cardCenter">
+        <ion-item class = "myCard">
+          <ion-img [src]=imgURL></ion-img> 
+          <div class="myOverlay">
+            {{toBeQuote}}
+          </div>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
 </ion-content>
