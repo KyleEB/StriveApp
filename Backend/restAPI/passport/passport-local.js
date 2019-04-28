@@ -108,7 +108,7 @@ passport.use('local-password', new LocalStrategy({
  */
 passport.use('local-cards', new LocalStrategy({
     usernameField: 'username',
-    cardArray: 'cards',
+    passwordField: 'password',
     passReqToCallback: true
 },
  (req, username, cards, done) => { 
