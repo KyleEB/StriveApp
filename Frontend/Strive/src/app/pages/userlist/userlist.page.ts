@@ -15,7 +15,7 @@ export class UserlistPage  {
   email: any;
   subscribed: any;
   admin: boolean;
-  allUsers: any;
+  allUsers: any; //this.allUsers is an array of users
 
   constructor(public nav: NavController,
     private theme: ThemeService,
