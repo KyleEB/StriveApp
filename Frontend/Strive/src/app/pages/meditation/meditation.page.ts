@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ThemeService } from 'src/app/theme.service';
 import { AudioService } from '../../services/audio.service';
-import { AlertController } from '@ionic/angular'
+import { AlertController, NavController } from '@ionic/angular'
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-meditation',
   templateUrl: './meditation.page.html',
@@ -11,11 +13,14 @@ export class MeditationPage implements OnInit {
   playing:boolean = false;
   chosenPic:string = "";
   picDesc:string = "";
+  subscribed:any;
 
   constructor(
     private theme: ThemeService,
     private audio: AudioService,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public storage: Storage,
+    public nav: NavController
   ) {
     this.theme.storedTheme;
    }
@@ -57,12 +62,28 @@ export class MeditationPage implements OnInit {
   }
 
   ngOnInit() {
-    this.choosePic();
+    
   }
 
   ngAfterViewInit(){
     this.audio.preload('silence', '../../../assets/meditation/silence.flac');
 
+  }
+
+  ionViewWillEnter(){
+    this.checkSubscribe();
+  }
+
+  async checkSubscribe(){
+    await this.storage.get('user').then((user) => {
+      console.log('your name is ' + user.fullname);
+      console.log('your username is ' + user.username);
+      if(user.subscribed==false){
+        this.nav.navigateRoot("menu/(menucontent:subscribe)");
+      } else {
+        this.choosePic();
+      }
+    });
   }
 
   play(){

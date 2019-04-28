@@ -48,7 +48,7 @@ const themes = {
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
 
   subColor:string="primary";
   subscribeStatus:string="Subscribe"
@@ -71,12 +71,21 @@ export class ProfilePage implements OnInit {
     this.theme.setTheme(themes[name]);
   }
 
-  ngOnInit() {
-      this.loadUser();
+  ionViewWillEnter(){
+    this.loadUser();
+  }
+
+  subscribeStatusSetup(){
+    if(this.subscribed==true){
+      this.subscribeStatus="You are Subscribed!";
+      this.subColor="secondary";
+    } else {
+      this.subscribeStatus="Subscribe";
+      this.subColor="primary";
+    }
   }
 
   subscribeStatusChange(){
-    this.loadUser();
     if(this.subscribed==false)
     {
       this.subscribed=true;
@@ -94,6 +103,45 @@ export class ProfilePage implements OnInit {
     err => {
       this.displayAlert('Subscribe Error', err.error);
     });
+    if(this.subscribed==true){
+      this.subLogout();
+    } else {
+      this.nonSubLogout();
+    }
+  }
+
+  async subLogout(){
+    let alert = await this.alertCtrl.create({
+      header: 'Congratulations!',
+      message: 'You are now subscribed! You will now be logged out, log in to view your new content',
+      buttons: [
+        {
+          text: "ok",
+          handler: data => {
+            this.nav.navigateRoot("menu/(menucontent:home)");
+          }
+        }
+      ]
+    });
+
+    await alert.present();   
+  }
+
+  async nonSubLogout(){
+    let alert = await this.alertCtrl.create({
+      header: "We're sorry",
+      message: 'You are now unsubscribed. You will now be logged out, but may return any time to renew your subscription.',
+      buttons: [
+        {
+          text: "ok",
+          handler: data => {
+            this.nav.navigateRoot("menu/(menucontent:home)");
+          }
+        }
+      ]
+    });
+
+    await alert.present();   
   }
 
   changeColor(){
@@ -107,7 +155,7 @@ export class ProfilePage implements OnInit {
 
   logout(){
     this.changeTheme('default')
-    this.nav.navigateRoot("menu/(menucontent:home)");
+    this.nav.navigateRoot("menu/(menucontent:subscribe)");
   }
 
   async loadUser(){
@@ -116,7 +164,10 @@ export class ProfilePage implements OnInit {
       console.log('your username is ' + user.username);
       this.username = user.username;
       this.user = user;
-     this.email = user.email;
+      this.email = user.email;
+      this.subscribed = user.subscribed;
+      console.log(user);
+      this.subscribeStatusSetup();
    });
   }
 

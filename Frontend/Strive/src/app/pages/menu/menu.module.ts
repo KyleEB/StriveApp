@@ -16,6 +16,7 @@ import { MeditationPageModule } from '../meditation/meditation.module';
 import { CalendarPageModule } from '../calendar/calendar.module';
 import { DatesPageModule } from '../calendar/dates/dates.module';
 import { ChatRoomPageModule } from 'src/app/chat-room/chat-room.module';
+import { SubscribePageModule } from '../subscribe/subscribe.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ChatRoomPageModule } from 'src/app/chat-room/chat-room.module';
     MeditationPageModule,
     CalendarPageModule,
     ChatRoomPageModule,
+    SubscribePageModule,
 	DatesPageModule
   ],
   declarations: [MenuPage]
