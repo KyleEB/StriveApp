@@ -57,7 +57,7 @@ export class ProfilePage {
   email: any;
   password: any;
   user: any;
-  admin:boolean=false;
+  admin:boolean=true;
   
 
   constructor(
@@ -157,6 +157,10 @@ export class ProfilePage {
   logout(){
     this.changeTheme('default')
     this.nav.navigateRoot("menu/(menucontent:subscribe)");
+  }
+
+  navigateUserList(){
+    this.nav.navigateRoot("menu/(menucontent:userlist)");
   }
 
   async loadUser(){

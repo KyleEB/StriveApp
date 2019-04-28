@@ -14,6 +14,7 @@ import { CalendarPage } from '../calendar/calendar.page';
 import { DatesPage } from '../calendar/dates/dates.page';
 import { ChatRoomPage } from 'src/app/chat-room/chat-room.page';
 import { SubscribePage } from '../subscribe/subscribe.page';
+import { UserlistPage } from '../userlist/userlist.page';
 
 const routes: Routes = [
   {
@@ -74,6 +75,11 @@ const routes: Routes = [
         path: 'subscribe',
         outlet: 'menucontent',
         component: SubscribePage
+      },
+      {
+        path: 'userlist',
+        outlet: 'menucontent',
+        component: UserlistPage
       },
 	  {
 		path: 'dates',

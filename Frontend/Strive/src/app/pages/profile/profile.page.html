@@ -21,6 +21,9 @@
   <ion-button expand="full" class='padding' (click)="changeColor()" (click)="subscribeStatusChange()" color={{subColor}}>{{subscribeStatus}}</ion-button><br>
   <ion-button expand="full" class='padding' (click)="logout()">Logout</ion-button>
   <br><br>
+  <div *ngIf="admin===true">
+      <ion-button color="tertiary" expand="full" (click)="navigateUserList()">View Users</ion-button><br><br>
+  </div>
 
   <div *ngIf="subscribed===false">
     <h3 class="center">To change themes subscribe!</h3>
@@ -41,5 +44,7 @@
     <ion-button color='light'>Light</ion-button>
     <ion-button color='medium'>Meduim</ion-button>
     <ion-button color='dark'>Dark</ion-button>
+    <br><br>
   </div>
+
 </ion-content>
