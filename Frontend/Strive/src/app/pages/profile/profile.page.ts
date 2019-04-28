@@ -56,6 +56,7 @@ export class ProfilePage implements OnInit {
   username: any;
   email: any;
   password: any;
+  user: any;
   
 
   constructor(
@@ -84,7 +85,7 @@ export class ProfilePage implements OnInit {
       this.subscribed=false;
       this.subscribeStatus="Subscribe"
     }
-    this.register.updateSubscribed(this.username, this.password, this.subscribed).subscribe(res => {
+    this.register.updateSubscribed(this.username, this.user.password, this.subscribed).subscribe(res => {
       console.log(res.user);
       if(res.user){
         this.storage.set('user', res.user);
@@ -114,7 +115,7 @@ export class ProfilePage implements OnInit {
       console.log('your name is ' + user.fullname);
       console.log('your username is ' + user.username);
       this.username = user.username;
-      this.password = user.password;
+      this.user = user;
      this.email = user.email;
    });
   }
