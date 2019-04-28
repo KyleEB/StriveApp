@@ -124,3 +124,23 @@ passport.use('local-cards', new LocalStrategy({
         
     });
 }));
+
+/**
+ * Uses passport to update the goals/cards of a User from the Frontend to the Server
+ */
+passport.use('local-subscribe', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+},
+ (req, username, subscribe, done) => { 
+    const newUser = new User();
+    newUser.subscribed = req.body.subscribed;
+    User.findOneAndUpdate({'username' : username},
+     {$set: {'subscribed' : newUser.subscribed } }, (err,user) => {
+        if(err){
+            return done(err)
+        }
+            return done(err, user);
+    });
+}));

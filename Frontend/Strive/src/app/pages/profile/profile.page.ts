@@ -83,6 +83,15 @@ export class ProfilePage implements OnInit {
       this.subscribed=false;
       this.subscribeStatus="Subscribe"
     }
+    this.register.updateSubscribed(this.username, this.password, this.subscribed).subscribe(res => {
+      console.log(res.user);
+      if(res.user){
+        this.storage.set('user', res.user);
+      }
+    },
+    err => {
+      this.displayAlert('Subscribe Error', err.error);
+    });
   }
 
   changeColor(){

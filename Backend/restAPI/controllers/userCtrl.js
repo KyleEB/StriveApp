@@ -88,3 +88,24 @@ exports.updateCards = (req, res, next) =>{
 
     })(req, res, next);
 }
+
+/**
+ * Exports updating subscribed function to Frontend 
+ * @param req Request
+ * @param res Response
+ * @param next Passback to Frontend
+ */
+exports.updateSubscribed = (req, res, next) =>{
+    passport.authenticate('local-subscribe', (err, user, info) => {
+        if(err){
+            return res.status(200).json({error: err});
+        }
+
+        if(info){
+            return res.status(200).json({error: info});
+        }
+
+        return res.status(201).json({message: 'Subscribed!', user: user});
+
+    })(req, res, next);
+}

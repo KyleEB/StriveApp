@@ -14,6 +14,7 @@ const userSchema = mongoose.Schema({
     password: {type : String},
     email: {type : String},
     fullname: {type : String},
+    subscribed: {type : Boolean},
     cards: [{ name : String , goal : String, desc : String, achieve: String}]
 });
 /**

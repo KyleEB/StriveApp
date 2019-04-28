@@ -41,4 +41,12 @@ export class RegisterService {
       cards: cards
     });
   }
+
+  updateSubscribed(username, password, subscribed): Observable <any>{
+    return this.http.post('http://localhost:3000/api/subscribe/user', {
+      username: username,
+      password: password,
+      subscribed: subscribed
+    });
+  }
 }
