@@ -57,6 +57,7 @@ export class ProfilePage {
   email: any;
   password: any;
   user: any;
+  admin:boolean=false;
   
 
   constructor(
@@ -166,7 +167,7 @@ export class ProfilePage {
       this.user = user;
       this.email = user.email;
       this.subscribed = user.subscribed;
-      console.log(user);
+      //this.admin = user.admin;
       this.subscribeStatusSetup();
    });
   }
