@@ -75,6 +75,7 @@ export class ProfilePage implements OnInit {
   }
 
   subscribeStatusChange(){
+    this.loadUser();
     if(this.subscribed==false)
     {
       this.subscribed=true;
@@ -113,6 +114,7 @@ export class ProfilePage implements OnInit {
       console.log('your name is ' + user.fullname);
       console.log('your username is ' + user.username);
       this.username = user.username;
+      this.password = user.password;
      this.email = user.email;
    });
   }
