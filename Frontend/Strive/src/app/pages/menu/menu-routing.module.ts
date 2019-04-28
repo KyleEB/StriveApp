@@ -45,11 +45,6 @@ const routes: Routes = [
         component: BlogPage
       },
       {
-        path: 'journal',
-        outlet: 'menucontent',
-        component: JournalPage
-      },
-      {
         path: 'meditation',
         outlet: 'menucontent',
         component: MeditationPage

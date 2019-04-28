@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../theme.service'
 import { AlertController } from '@ionic/angular';
+import { task } from './task';
 
 @Component({
   selector: 'app-calendar',
@@ -11,50 +12,25 @@ export class CalendarPage implements OnInit {
   event: any;
   time: any;
   location: any;
-public cards = [{"name": "New Event", "task": "false", "checklist": "false"}];
-public form = [
-      { val: 'Task1', isChecked: false },
-      { val: 'Task2', isChecked: false },
-      { val: 'Task3', isChecked: false }
-    ];
+  task: any;
+  part1: any;
+  part2: any;
+  part3: any;
+
+  public todo = [];
+
+  public cards = [{ "name": "New Event", "task": "false", "checklist": "false" }];
+  
 
   constructor(
     private theme: ThemeService,
-    private alertCtrl: AlertController    ) {
+    private alertCtrl: AlertController) {
     this.theme.storedTheme;
-   }
-
-  async add() {
-    let alert = await this.alertCtrl.create({
-      header: 'Add Checklist?',
-      cssClass: 'custom',
-      buttons: [
-        {
-          text: "Yes",
-          handler: () => {
-            this.customizeForm();
-            this.cards[0].task = "true";
-            this.cards[0].checklist = "true";
-            console.log(this.form);
-          }
-        },
-        {
-          text: "No",
-          handler: () => {
-            this.cards[0].task = "true";
-            this.cards[0].checklist = "false";
-          }
-        }
-      ]
-    });
-    return await alert.present();
   }
 
-
-  async popup(){
+  async popup() {
     let alert = await this.alertCtrl.create({
       header: 'New Event',
-      cssClass: 'custom',
       inputs: [
         {
           type: 'text',
@@ -71,26 +47,51 @@ public form = [
           name: 'location',
           placeholder: 'Location'
         }
-      ],buttons: [
-	    {
+      ], buttons: [
+        {
           text: "save",
           handler: data => {
-            if(typeof event != null){
-              this.event = data.event;
-              this.time =data.time;
-              this.location = data.location;
-            }
-            console.log(data);
             this.add();
-			    }
-      }
+            this.event = data.event;
+            this.time = data.time;
+            this.location = data.location;
+          }
+        }
       ]
     });
     return await alert.present();
   }
-async customizeForm(){
+
+  async add() {
     let alert = await this.alertCtrl.create({
-      cssClass:'custom',
+      header: 'Add Checklist?',
+      buttons: [
+        {
+          text: "Yes",
+          handler: () => {
+            this.customizeForm();
+            this.cards[0].task = "true";
+            this.cards[0].checklist = "true";
+          }
+        },
+        {
+          text: "No",
+          handler: data => {
+            this.cards[0].task = "true";
+            this.cards[0].checklist = "false";
+            console.log(JSON.stringify(data));
+            this.task = new task(this.event, this.time, this.location, this.cards[0].checklist, this.part1, this.part2, this.part3);
+            this.todo.push(this.task);
+          }
+        }
+      ]
+    });
+    return await alert.present();
+  }
+
+  async customizeForm() {
+    let alert = await this.alertCtrl.create({
+      cssClass: 'custom',
       inputs: [
         {
           type: 'text',
@@ -112,12 +113,12 @@ async customizeForm(){
         {
           text: 'next',
           handler: data => {
-          if(this.form)
-            this.form[0].val = data.task1;
-            this.form[1].val = data.task2;
-            this.form[2].val = data.task3;
-            console.log(this.form);
-            this.cards[0].checklist = "true";
+            this.part1 = data.task1;
+            this.part2 = data.task2;
+            this.part3 = data.task3;
+            console.log(JSON.stringify(data));
+            this.task = new task(this.event, this.time, this.location, this.cards[0].checklist, this.part1, this.part2, this.part3);
+            this.todo.push(this.task);
           }
         }
       ]
@@ -136,11 +137,4 @@ async customizeForm(){
 
     await alert.present();
   }
-
-  
 }
-  
-  
-  
-
-

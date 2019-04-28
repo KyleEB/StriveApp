@@ -1,3 +1,24 @@
 .custTitle{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
+}
+
+.card{
+    background-color: "dark";
+}
+
+.square {
+  width:300px;
+  height:300px;
+  background-size:  100% 100%;
+  background-color: "dark";
+}
+
+.center {
+  padding-top: 5%;
+  text-align: center;
+}
+
+ion-row{
+align-items: center;
+justify-content: center;
+}

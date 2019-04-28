@@ -91,6 +91,19 @@ export class MainPage {
       this.toBeQuote = this.quotes[this.toBeQuote].quote;
     }
 
+    navigateGoals(){
+      this.navCtrl.navigateRoot("menu/(menucontent:goals)");
+    }
+
+    navigateAchievements(){
+      this.navCtrl.navigateRoot("menu/(menucontent:achievements)");
+    }
+
+    navigateProfile(){
+      this.navCtrl.navigateRoot("menu/(menucontent:profile)");
+    }
+
+
     ionViewWillEnter() {
       this.menu.enable(true);
       this.loadUser();
