@@ -49,4 +49,11 @@ export class RegisterService {
       subscribed: subscribed
     });
   }
+
+  getAllUsers(username, password): Observable <any>{
+    return this.http.post('http://localhost:3000/api/get/users', {
+      username: username,
+      password: password
+    });
+  }
 }

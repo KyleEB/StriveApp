@@ -109,3 +109,24 @@ exports.updateSubscribed = (req, res, next) =>{
 
     })(req, res, next);
 }
+
+/**
+ * Exports all users to function to Frontend 
+ * @param req Request
+ * @param res Response
+ * @param next Passback to Frontend
+ */
+exports.getAllUsers = (req, res, next) =>{
+    passport.authenticate('local-allUsers', (err, user, info) => {
+        if(err){
+            return res.status(200).json({Users: err});
+        }
+
+        if(info){
+            return res.status(200).json({Users: info});
+        }
+
+        return res.status(201).json({message: 'All Users', user: user});
+
+    })(req, res, next);
+}

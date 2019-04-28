@@ -171,7 +171,12 @@ export class ProfilePage {
       this.user = user;
       this.email = user.email;
       this.subscribed = user.subscribed;
-      //this.admin = user.admin;
+      if(user.admin){
+        console.log(user.admin) 
+        this.admin = true;
+       } else { 
+        this.admin = false; 
+      }
       this.subscribeStatusSetup();
    });
   }

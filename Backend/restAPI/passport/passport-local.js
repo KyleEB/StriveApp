@@ -144,3 +144,21 @@ passport.use('local-subscribe', new LocalStrategy({
             return done(err, user);
     });
 }));
+/**
+ * Uses passport to show all users of the app from the admin from Server
+ */
+passport.use('local-allUsers', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+},
+ (req, username, password, done) => { 
+    const newUser = new User();
+    newUser.subscribed = req.body.subscribed;
+    User.find({}).then( function (users){
+        if(users){
+            return done(users);
+        }
+            return done(err);
+    });
+}));
