@@ -1,2 +1,1 @@
-# Team_33
-
+Ionic App for COM S 309
